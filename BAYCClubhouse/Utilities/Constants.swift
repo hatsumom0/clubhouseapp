@@ -39,14 +39,10 @@ enum Constants {
 
     // MARK: - Glyph sign-in (real @use-glyph/sdk-react via web bridge)
     enum Glyph {
-        /// Where the glyph-auth-bridge web app is served.
-        /// DEBUG: `npm run dev` in glyph-auth-bridge/ (simulator reaches the Mac's localhost).
-        /// RELEASE: the hosted bridge (Cloudflare Pages) — update once the site exists.
-        #if DEBUG
-        static let bridgeURL = "http://localhost:5173"
-        #else
-        static let bridgeURL = "https://REPLACE-WITH-YOUR-CLOUDFLARE-DOMAIN.pages.dev"
-        #endif
+        /// Where the glyph-auth-bridge web app is served (Cloudflare).
+        /// For local bridge development, run `npm run dev` in glyph-auth-bridge/
+        /// and temporarily switch to "http://localhost:5173" (simulator only).
+        static let bridgeURL = "https://clubhouseapp.vfsp2wqysh.workers.dev"
         static let callbackScheme = "baycclubhouse"
         static let callbackURL = "baycclubhouse://glyph-auth"
     }
