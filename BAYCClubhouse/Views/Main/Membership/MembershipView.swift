@@ -128,7 +128,7 @@ struct MembershipCardView: View {
         VStack(spacing: 16) {
             Text("Your Membership Card")
                 .font(.system(size: 14, weight: .medium, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             // Flippable Card Container
             ZStack {
@@ -156,7 +156,7 @@ struct MembershipCardView: View {
 
             Text("Tap card to flip")
                 .font(.system(size: 11, design: .rounded))
-                .foregroundColor(.white.opacity(0.4))
+                .foregroundColor(.white.opacity(0.65))
         }
     }
 }
@@ -447,7 +447,7 @@ struct CardBackView: View {
 
                 Text(collectionFullName)
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
 
                 // Tier badge
                 HStack(spacing: 6) {
@@ -546,14 +546,14 @@ struct ClubAccessSection: View {
 
                         Text("QR code, locker access, arrival notification")
                             .font(.system(size: 13, design: .rounded))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
 
                     Spacer()
 
                     Image(systemName: "chevron.right")
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.white.opacity(0.4))
+                        .foregroundColor(.white.opacity(0.65))
                 }
                 .padding(16)
                 .background(
@@ -621,7 +621,7 @@ struct AccessQuickCard: View {
 
             Text(subtitle)
                 .font(.system(size: 10, design: .rounded))
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 12)
@@ -803,7 +803,7 @@ struct AppleWalletSection: View {
 
                         Text(isPassAdded ? "NFC membership pass ready" : "Use NFC to verify membership at the door")
                             .font(.system(size: 12, design: .rounded))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
 
                     Spacer()
@@ -873,7 +873,7 @@ struct AppleWalletPreviewView: View {
                     } label: {
                         Image(systemName: "xmark.circle.fill")
                             .font(.system(size: 28))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
                     Spacer()
                 }
@@ -1077,7 +1077,7 @@ struct AppleWalletPreviewView: View {
 
                 Text("Your membership pass will be available in\nApple Wallet for NFC door access.")
                     .font(.system(size: 13, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 40)
             }
@@ -1162,14 +1162,14 @@ struct ConciergeSection: View {
 
                         Text("Get help with reservations, events & more")
                             .font(.system(size: 12, design: .rounded))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
 
                     Spacer()
 
                     Image(systemName: "chevron.right")
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.white.opacity(0.4))
+                        .foregroundColor(.white.opacity(0.65))
                 }
                 .padding(16)
                 .glassCard(cornerRadius: 20)
@@ -1225,7 +1225,7 @@ struct VerificationRow: View {
                     .foregroundColor(.white)
                 Text(subtitle)
                     .font(.system(size: 11, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
             }
             Spacer()
         }
@@ -1293,7 +1293,7 @@ struct QRCodeView: View {
                     Button { dismiss() } label: {
                         Image(systemName: "xmark.circle.fill")
                             .font(.system(size: 28))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
                 }
                 .padding(.horizontal, 20)
@@ -1368,7 +1368,7 @@ struct QRCodeView: View {
                             Image(systemName: "lock.fill").font(.system(size: 10))
                             Text("Cryptographically signed").font(.system(size: 11, design: .rounded))
                         }
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
                         .padding(.top, 4)
                     }
                 }
@@ -1377,7 +1377,7 @@ struct QRCodeView: View {
 
                 Text("Present this QR code at the clubhouse entrance.\nStaff will scan to verify your membership.")
                     .font(.system(size: 13, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 40)
                     .padding(.bottom, 40)

@@ -94,7 +94,7 @@ struct OrderTrackerCard: View {
                         Text("Est. \(order.estimatedPrepTime) min")
                             .font(.system(size: 12, design: .rounded))
                     }
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
                 }
 
                 // View Tab Button
@@ -180,7 +180,7 @@ struct WorkingItemRow: View {
 
                 Text("working on: \(item.itemName)")
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
             }
 
             Spacer()
@@ -238,7 +238,7 @@ struct SpaceBookingCard: View {
 
                     Text(booking.floor)
                         .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
                 }
 
                 Spacer()
@@ -260,7 +260,7 @@ struct SpaceBookingCard: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("DATE")
                         .font(.system(size: 10, weight: .bold, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
 
                     Text(booking.formattedDate)
                         .font(.system(size: 14, weight: .semibold, design: .rounded))
@@ -270,7 +270,7 @@ struct SpaceBookingCard: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("TIME")
                         .font(.system(size: 10, weight: .bold, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
 
                     Text(booking.formattedTimeRange)
                         .font(.system(size: 14, weight: .semibold, design: .rounded))
@@ -280,7 +280,7 @@ struct SpaceBookingCard: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("GUESTS")
                         .font(.system(size: 10, weight: .bold, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
 
                     Text("\(booking.guestCount)")
                         .font(.system(size: 14, weight: .semibold, design: .rounded))
@@ -293,7 +293,7 @@ struct SpaceBookingCard: View {
                 HStack {
                     Text("Tab Total")
                         .font(.system(size: 13, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
 
                     Spacer()
 
@@ -411,7 +411,7 @@ struct ValetTrackerCard: View {
 
                         Text(request.vehicleInfo.displayName)
                             .font(.system(size: 12, design: .rounded))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
 
                     Spacer()
@@ -461,7 +461,7 @@ struct ValetTrackerCard: View {
 
                             Text(valetStatusDescription(request))
                                 .font(.system(size: 12, design: .rounded))
-                                .foregroundColor(.white.opacity(0.6))
+                                .foregroundColor(.white.opacity(0.78))
                         }
 
                         Spacer()
@@ -816,7 +816,7 @@ struct ValetDetailSheet: View {
                             if let plate = request.vehicleInfo.licensePlate {
                                 Text(plate)
                                     .font(.system(size: 14, weight: .medium, design: .monospaced))
-                                    .foregroundColor(.white.opacity(0.6))
+                                    .foregroundColor(.white.opacity(0.78))
                                     .padding(.horizontal, 12)
                                     .padding(.vertical, 6)
                                     .background(
@@ -876,7 +876,7 @@ struct DetailRow: View {
         HStack {
             Text(label)
                 .font(.system(size: 14, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             Spacer()
 
@@ -916,7 +916,7 @@ struct ValetProgressTimeline: View {
         VStack(alignment: .leading, spacing: 0) {
             Text("PROGRESS")
                 .font(.system(size: 10, weight: .bold, design: .rounded))
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
                 .tracking(1)
                 .padding(.bottom, 16)
 

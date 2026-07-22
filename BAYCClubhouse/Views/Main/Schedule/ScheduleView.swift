@@ -97,7 +97,7 @@ struct CalendarHeaderView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
                         .frame(width: 44, height: 44)
                         .background(Circle().fill(Color.white.opacity(0.1)))
                 }
@@ -111,7 +111,7 @@ struct CalendarHeaderView: View {
 
                     Text(isExpanded ? "Month View" : "Week View")
                         .font(.system(size: 10, weight: .medium, design: .rounded))
-                        .foregroundColor(.white.opacity(0.4))
+                        .foregroundColor(.white.opacity(0.65))
                 }
 
                 Spacer()
@@ -121,7 +121,7 @@ struct CalendarHeaderView: View {
                 } label: {
                     Image(systemName: "chevron.right")
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
                         .frame(width: 44, height: 44)
                         .background(Circle().fill(Color.white.opacity(0.1)))
                 }
@@ -132,7 +132,7 @@ struct CalendarHeaderView: View {
                 ForEach(daysOfWeek, id: \.self) { day in
                     Text(day)
                         .font(.system(size: 12, weight: .medium, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
                         .frame(maxWidth: .infinity)
                 }
             }
@@ -345,15 +345,15 @@ struct MyReservationsSection: View {
                 VStack(spacing: 12) {
                     Image(systemName: "calendar.badge.plus")
                         .font(.system(size: 40))
-                        .foregroundColor(.white.opacity(0.3))
+                        .foregroundColor(.white.opacity(0.55))
 
                     Text("No active reservations")
                         .font(.system(size: 16, weight: .medium, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
 
                     Text("Book a lounge, spa treatment, or dining experience!")
                         .font(.system(size: 14, design: .rounded))
-                        .foregroundColor(.white.opacity(0.4))
+                        .foregroundColor(.white.opacity(0.65))
                         .multilineTextAlignment(.center)
                 }
                 .frame(maxWidth: .infinity)
@@ -407,7 +407,7 @@ struct ReservationCard: View {
 
                 Text("\(reservation.formattedDate) • \(reservation.formattedTime)")
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
 
                 HStack(spacing: 12) {
                     HStack(spacing: 4) {
@@ -416,7 +416,7 @@ struct ReservationCard: View {
                         Text("\(reservation.guests)")
                             .font(.system(size: 11, weight: .medium, design: .rounded))
                     }
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
 
                     Text(reservation.status.rawValue)
                         .font(.system(size: 10, weight: .semibold, design: .rounded))
@@ -434,7 +434,7 @@ struct ReservationCard: View {
 
             Image(systemName: "chevron.right")
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.white.opacity(0.4))
+                .foregroundColor(.white.opacity(0.65))
         }
         .padding(14)
         .glassCard(cornerRadius: 18)
@@ -621,7 +621,7 @@ struct ReservationDetailsSection: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("DETAILS")
                 .font(.system(size: 12, weight: .bold, design: .rounded))
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
                 .tracking(1)
 
             VStack(spacing: 16) {
@@ -639,7 +639,7 @@ struct ReservationDetailsSection: View {
                         if let detail = reservation.locationDetail {
                             Text(detail)
                                 .font(.system(size: 13, design: .rounded))
-                                .foregroundColor(.white.opacity(0.6))
+                                .foregroundColor(.white.opacity(0.78))
                         }
                     }
 
@@ -662,7 +662,7 @@ struct ReservationDetailsSection: View {
 
                         Text("\(reservation.guests) \(reservation.guests == 1 ? "person" : "people")")
                             .font(.system(size: 13, design: .rounded))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
 
                     Spacer()
@@ -704,15 +704,15 @@ struct MyEventsSection: View {
                 VStack(spacing: 12) {
                     Image(systemName: "calendar.badge.plus")
                         .font(.system(size: 40))
-                        .foregroundColor(.white.opacity(0.3))
+                        .foregroundColor(.white.opacity(0.55))
 
                     Text("No upcoming events")
                         .font(.system(size: 16, weight: .medium, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
 
                     Text("Browse events on the Home tab or ask the concierge to RSVP!")
                         .font(.system(size: 14, design: .rounded))
-                        .foregroundColor(.white.opacity(0.4))
+                        .foregroundColor(.white.opacity(0.65))
                         .multilineTextAlignment(.center)
                 }
                 .frame(maxWidth: .infinity)
@@ -780,7 +780,7 @@ struct AttendingEventCard: View {
 
                 Text(formattedDate)
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
 
                 HStack(spacing: 12) {
                     HStack(spacing: 4) {
@@ -797,7 +797,7 @@ struct AttendingEventCard: View {
                             .font(.system(size: 11, design: .rounded))
                     }
                 }
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
             }
 
             Spacer()
@@ -884,7 +884,7 @@ struct AddReservationView: View {
 
                     Text("Coming Soon")
                         .font(.system(size: 16, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
 
                     Spacer()
                 }

@@ -117,7 +117,7 @@ struct FoodOrderView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Deliver to")
                 .font(.system(size: 12, weight: .medium, design: .rounded))
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
 
             Menu {
                 ForEach(orderService.getAvailableLocations(), id: \.displayName) { location in
@@ -141,7 +141,7 @@ struct FoodOrderView: View {
 
                     Image(systemName: "chevron.down")
                         .font(.system(size: 12))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
                 }
                 .padding(14)
                 .background(
@@ -158,7 +158,7 @@ struct FoodOrderView: View {
         HStack(spacing: 10) {
             Image(systemName: "magnifyingglass")
                 .font(.system(size: 16))
-                .foregroundColor(.white.opacity(0.4))
+                .foregroundColor(.white.opacity(0.65))
 
             TextField("Search menu...", text: $searchText)
                 .font(.system(size: 15, design: .rounded))
@@ -388,7 +388,7 @@ struct MenuItemCard: View {
 
                 Text(item.description)
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
                     .lineLimit(2)
 
                 HStack(spacing: 8) {

@@ -294,7 +294,7 @@ struct TokenProofVerificationView: View {
                     } label: {
                         Image(systemName: "xmark.circle.fill")
                             .font(.system(size: 28))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
                     Spacer()
                 }
@@ -343,7 +343,7 @@ struct TokenProofVerificationView: View {
                          ? "Unable to verify your eligibility"
                          : "Verifying your NFT ownership")
                         .font(.system(size: 14, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
                         .multilineTextAlignment(.center)
                 }
 
@@ -430,7 +430,7 @@ struct TokenProofVerificationView: View {
                      ? "You can now RSVP to this exclusive event"
                      : "Powered by TokenProof secure verification")
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(.white.opacity(0.65))
                     .padding(.bottom, 40)
             }
         }
@@ -503,7 +503,7 @@ struct VerificationStepRow: View {
                 } else {
                     Text("\(step)")
                         .font(.system(size: 14, weight: .bold, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
                 }
             }
 
@@ -628,7 +628,7 @@ struct QuickInfoCard: View {
 
             Text(title)
                 .font(.system(size: 11, weight: .medium, design: .rounded))
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
 
             Text(value)
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
@@ -752,7 +752,7 @@ struct EventAttendeesSection: View {
 
                 Text("\(event.totalSpots - event.spotsLeft) attending")
                     .font(.system(size: 13, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
             }
 
             // Attendee avatars
@@ -803,7 +803,7 @@ struct EventAttendeesSection: View {
             if !event.attendees.isEmpty {
                 Text(attendeeNamesString)
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
                     .lineLimit(2)
             }
         }

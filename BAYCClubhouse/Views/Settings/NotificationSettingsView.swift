@@ -109,7 +109,7 @@ struct AuthorizationSection: View {
             if !notificationService.isAuthorized {
                 Text("Enable notifications to receive event reminders, valet updates, and more.")
                     .font(.caption)
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
                     .padding(.horizontal, 4)
             }
         }
@@ -342,7 +342,7 @@ struct EventReminderSection: View {
 
             Text("Select when you want to be reminded about upcoming events.")
                 .font(.caption)
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
                 .padding(.horizontal, 4)
         }
     }
@@ -374,7 +374,7 @@ struct QuietHoursSection: View {
                             .foregroundColor(.white)
                         Text("Silence notifications during set times")
                             .font(.caption)
-                            .foregroundColor(.white.opacity(0.5))
+                            .foregroundColor(.white.opacity(0.72))
                     }
 
                     Spacer()
@@ -476,7 +476,7 @@ struct NotificationToggleRow: View {
                     .foregroundColor(.white)
                 Text(subtitle)
                     .font(.caption)
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
             }
 
             Spacer()

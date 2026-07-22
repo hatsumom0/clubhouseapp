@@ -74,7 +74,7 @@ struct LoginView: View {
                 VStack(spacing: 24) {
                     Text("Connect your wallet to verify\nBAYC or MAYC membership")
                         .font(.system(size: 15, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
                         .multilineTextAlignment(.center)
                         .lineSpacing(4)
 
@@ -101,7 +101,7 @@ struct LoginView: View {
 
                                 Text("X, email or wallet")
                                     .font(.system(size: 11, design: .rounded))
-                                    .foregroundColor(.white.opacity(0.5))
+                                    .foregroundColor(.white.opacity(0.72))
                             }
 
                             Spacer()
@@ -133,7 +133,7 @@ struct LoginView: View {
 
                         Text("or")
                             .font(.system(size: 12, design: .rounded))
-                            .foregroundColor(.white.opacity(0.4))
+                            .foregroundColor(.white.opacity(0.65))
                             .padding(.horizontal, 12)
 
                         Rectangle()
@@ -172,11 +172,11 @@ struct LoginView: View {
                         Text("Secure wallet connection via Glyph")
                             .font(.system(size: 12, design: .rounded))
                     }
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(.white.opacity(0.65))
 
                     Text("By connecting, you agree to our Terms of Service")
                         .font(.system(size: 11, design: .rounded))
-                        .foregroundColor(.white.opacity(0.3))
+                        .foregroundColor(.white.opacity(0.55))
                 }
                 .padding(.bottom, 40)
             }

@@ -132,7 +132,7 @@ struct WeatherWidget: View {
 
                 Text("Miami")
                     .font(.system(size: 11, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
             }
         }
         .padding(.horizontal, 12)
@@ -277,7 +277,7 @@ struct AISummaryCard: View {
 
                     Text("Your personalized daily briefing")
                         .font(.system(size: 11, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
                 }
 
                 Spacer()
@@ -289,7 +289,7 @@ struct AISummaryCard: View {
                 } label: {
                     Image(systemName: isExpanded ? "chevron.up.circle.fill" : "chevron.down.circle.fill")
                         .font(.system(size: 22))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
                 }
             }
 
@@ -324,7 +324,7 @@ struct AISummaryCard: View {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("ACTIVE NOW")
                                 .font(.system(size: 10, weight: .bold, design: .rounded))
-                                .foregroundColor(.white.opacity(0.5))
+                                .foregroundColor(.white.opacity(0.72))
                                 .tracking(1)
 
                             // Open Tab Row
@@ -351,7 +351,7 @@ struct AISummaryCard: View {
                                             let total = order.items.reduce(0) { $0 + ($1.menuItem.price * Double($1.quantity)) }
                                             Text("\(itemCount) item\(itemCount == 1 ? "" : "s") • $\(String(format: "%.2f", total))")
                                                 .font(.system(size: 11, design: .rounded))
-                                                .foregroundColor(.white.opacity(0.5))
+                                                .foregroundColor(.white.opacity(0.72))
                                         }
 
                                         Spacer()
@@ -365,7 +365,7 @@ struct AISummaryCard: View {
 
                                         Image(systemName: "chevron.right")
                                             .font(.system(size: 12))
-                                            .foregroundColor(.white.opacity(0.3))
+                                            .foregroundColor(.white.opacity(0.55))
                                     }
                                 }
                                 .buttonStyle(PlainButtonStyle())
@@ -392,7 +392,7 @@ struct AISummaryCard: View {
                                         let _ = timeFormatter.dateFormat = "h:mm a"
                                         Text("Until \(timeFormatter.string(from: booking.endTime))")
                                             .font(.system(size: 11, design: .rounded))
-                                            .foregroundColor(.white.opacity(0.5))
+                                            .foregroundColor(.white.opacity(0.72))
                                     }
 
                                     Spacer()
@@ -413,7 +413,7 @@ struct AISummaryCard: View {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("NEXT UP")
                                 .font(.system(size: 10, weight: .bold, design: .rounded))
-                                .foregroundColor(.white.opacity(0.5))
+                                .foregroundColor(.white.opacity(0.72))
                                 .tracking(1)
 
                             ForEach(upcomingItems.prefix(3), id: \.id) { item in
@@ -439,7 +439,7 @@ struct AISummaryCard: View {
 
                                                 Text(formatEventDate(event.date))
                                                     .font(.system(size: 11, design: .rounded))
-                                                    .foregroundColor(.white.opacity(0.5))
+                                                    .foregroundColor(.white.opacity(0.72))
                                             }
 
                                             Spacer()
@@ -453,7 +453,7 @@ struct AISummaryCard: View {
 
                                             Image(systemName: "chevron.right")
                                                 .font(.system(size: 12))
-                                                .foregroundColor(.white.opacity(0.3))
+                                                .foregroundColor(.white.opacity(0.55))
                                         }
                                     }
                                     .buttonStyle(PlainButtonStyle())
@@ -479,7 +479,7 @@ struct AISummaryCard: View {
 
                                                 Text("\(reservation.formattedDate) • \(reservation.formattedTime)")
                                                     .font(.system(size: 11, design: .rounded))
-                                                    .foregroundColor(.white.opacity(0.5))
+                                                    .foregroundColor(.white.opacity(0.72))
                                             }
 
                                             Spacer()
@@ -493,7 +493,7 @@ struct AISummaryCard: View {
 
                                             Image(systemName: "chevron.right")
                                                 .font(.system(size: 12))
-                                                .foregroundColor(.white.opacity(0.3))
+                                                .foregroundColor(.white.opacity(0.55))
                                         }
                                     }
                                     .buttonStyle(PlainButtonStyle())
@@ -630,7 +630,7 @@ struct MyScheduleView: View {
                             VStack(spacing: 16) {
                                 Image(systemName: "calendar.badge.plus")
                                     .font(.system(size: 50))
-                                    .foregroundColor(.white.opacity(0.3))
+                                    .foregroundColor(.white.opacity(0.55))
 
                                 Text("No Upcoming Events")
                                     .font(.system(size: 18, weight: .semibold, design: .rounded))
@@ -638,7 +638,7 @@ struct MyScheduleView: View {
 
                                 Text("Browse events and make reservations to see them here")
                                     .font(.system(size: 14, design: .rounded))
-                                    .foregroundColor(.white.opacity(0.5))
+                                    .foregroundColor(.white.opacity(0.72))
                                     .multilineTextAlignment(.center)
                             }
                             .padding(.vertical, 60)
@@ -682,7 +682,7 @@ struct ScheduleStatCard: View {
 
             Text(label)
                 .font(.system(size: 12, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 20)
@@ -702,7 +702,7 @@ struct SectionHeader: View {
 
             Text(title.uppercased())
                 .font(.system(size: 12, weight: .bold, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
                 .tracking(1)
         }
     }
@@ -758,12 +758,12 @@ struct ScheduleEventCard: View {
 
                 Text(formattedDate)
                     .font(.system(size: 13, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
 
                 HStack(spacing: 8) {
                     Label(event.location, systemImage: "mappin")
                         .font(.system(size: 11, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
 
                     if event.rsvpStatus == .going {
                         Text("GOING")
@@ -780,7 +780,7 @@ struct ScheduleEventCard: View {
 
             Image(systemName: "chevron.right")
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.white.opacity(0.4))
+                .foregroundColor(.white.opacity(0.65))
         }
         .padding(14)
         .glassCard(cornerRadius: 18)
@@ -817,12 +817,12 @@ struct ScheduleReservationCard: View {
 
                 Text("\(reservation.formattedDate) • \(reservation.formattedTime)")
                     .font(.system(size: 13, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
 
                 HStack(spacing: 8) {
                     Label(reservation.location, systemImage: "mappin")
                         .font(.system(size: 11, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
 
                     Text(reservation.status.rawValue.uppercased())
                         .font(.system(size: 9, weight: .bold, design: .rounded))
@@ -834,7 +834,7 @@ struct ScheduleReservationCard: View {
                     if reservation.guests > 1 {
                         Label("\(reservation.guests)", systemImage: "person.2.fill")
                             .font(.system(size: 11, design: .rounded))
-                            .foregroundColor(.white.opacity(0.5))
+                            .foregroundColor(.white.opacity(0.72))
                     }
                 }
             }
@@ -843,7 +843,7 @@ struct ScheduleReservationCard: View {
 
             Image(systemName: "chevron.right")
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.white.opacity(0.4))
+                .foregroundColor(.white.opacity(0.65))
         }
         .padding(14)
         .glassCard(cornerRadius: 18)
@@ -886,7 +886,7 @@ struct WeatherDetailView: View {
                         if let lastUpdated = weatherService.lastUpdated {
                             Text("Last updated: \(lastUpdated.formatted(date: .omitted, time: .shortened))")
                                 .font(.system(size: 11, design: .rounded))
-                                .foregroundColor(.white.opacity(0.4))
+                                .foregroundColor(.white.opacity(0.65))
                                 .padding(.top, 8)
                         }
 
@@ -993,7 +993,7 @@ struct CurrentWeatherHero: View {
             if weather.feelsLikeFahrenheit != weather.temperatureFahrenheit {
                 Text("Feels like \(weather.feelsLikeFahrenheit)°")
                     .font(.system(size: 15, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
             }
 
             // Location
@@ -1003,7 +1003,7 @@ struct CurrentWeatherHero: View {
                 Text(weather.cityName)
                     .font(.system(size: 14, weight: .medium, design: .rounded))
             }
-            .foregroundColor(.white.opacity(0.5))
+            .foregroundColor(.white.opacity(0.72))
             .padding(.top, 4)
         }
         .padding(.vertical, 30)
@@ -1061,7 +1061,7 @@ struct WeatherDetailTile: View {
 
                 Text(title)
                     .font(.system(size: 12, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
             }
 
             Text(value)
@@ -1081,7 +1081,7 @@ struct ForecastSection: View {
         VStack(alignment: .leading, spacing: 14) {
             Text("5-DAY FORECAST")
                 .font(.system(size: 12, weight: .bold, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
                 .tracking(1)
 
             VStack(spacing: 0) {
@@ -1104,7 +1104,7 @@ struct ForecastSection: View {
                         HStack(spacing: 12) {
                             Text("\(day.low)°")
                                 .font(.system(size: 15, design: .rounded))
-                                .foregroundColor(.white.opacity(0.5))
+                                .foregroundColor(.white.opacity(0.72))
                                 .frame(width: 35, alignment: .trailing)
 
                             // Temperature bar
@@ -1202,7 +1202,7 @@ struct WeatherSuggestionsSection: View {
             VStack(alignment: .leading, spacing: 14) {
                 Text("TODAY'S TIPS")
                     .font(.system(size: 12, weight: .bold, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
                     .tracking(1)
 
                 VStack(spacing: 10) {
@@ -1352,11 +1352,11 @@ struct ClubhouseInfoCard: View {
                 VStack {
                     Image(systemName: "building.2.fill")
                         .font(.system(size: 50))
-                        .foregroundColor(.white.opacity(0.3))
+                        .foregroundColor(.white.opacity(0.55))
 
                     Text("Clubhouse Image")
                         .font(.caption)
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
                 }
             }
 
@@ -1376,29 +1376,13 @@ struct ClubhouseInfoCard: View {
 
                 Text("Your exclusive members-only space in the heart of Miami. Access premium amenities, networking events, and the ultimate Ape experience.")
                     .font(.system(size: 14, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
                     .lineSpacing(4)
             }
             .padding(.horizontal, 4)
         }
         .padding(16)
-        .background(
-            ZStack {
-                RoundedRectangle(cornerRadius: 28)
-                    .fill(.ultraThinMaterial)
-                RoundedRectangle(cornerRadius: 28)
-                    .fill(Color.white.opacity(0.05))
-                RoundedRectangle(cornerRadius: 28)
-                    .stroke(
-                        LinearGradient(
-                            colors: [.white.opacity(0.2), .clear],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        lineWidth: 1
-                    )
-            }
-        )
+        .glassCard(cornerRadius: 28)
         .shadow(color: .black.opacity(0.2), radius: 15, y: 8)
     }
 }
@@ -1497,7 +1481,7 @@ struct EventCard: View {
 
                 Text(formattedDate)
                     .font(.system(size: 13, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
 
                 HStack(spacing: 8) {
                     if event.spotsLeft > 0 {
@@ -1540,21 +1524,14 @@ struct EventCard: View {
 
             Image(systemName: "chevron.right")
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.white.opacity(0.4))
+                .foregroundColor(.white.opacity(0.65))
         }
         .padding(14)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(
-                            event.isExclusiveEvent
-                                ? Color(hex: "f39c12").opacity(0.3)
-                                : Color.white.opacity(0.1),
-                            lineWidth: 1
-                        )
-                )
+        .glassCard(
+            cornerRadius: 18,
+            tint: event.isExclusiveEvent
+                ? Color(hex: "f39c12").opacity(0.25)
+                : ClubhouseGlass.cardTint
         )
     }
 }
@@ -1577,7 +1554,7 @@ struct YugaNewsSection: View {
                 HStack(spacing: 4) {
                     Text("@BoredApeYC")
                         .font(.system(size: 12, weight: .medium, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
 
                     Image(systemName: "checkmark.seal.fill")
                         .font(.system(size: 12))
@@ -1634,12 +1611,12 @@ struct NewsCard: View {
 
                 Text(preview)
                     .font(.system(size: 13, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
                     .lineLimit(2)
 
                 Text(timeAgo)
                     .font(.system(size: 11, design: .rounded))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(.white.opacity(0.65))
             }
 
             if hasImage {
@@ -1655,7 +1632,7 @@ struct NewsCard: View {
                     .overlay(
                         Image(systemName: "photo")
                             .font(.system(size: 24))
-                            .foregroundColor(.white.opacity(0.3))
+                            .foregroundColor(.white.opacity(0.55))
                     )
             }
         }
@@ -1715,7 +1692,7 @@ struct ArticleCard: View {
 
                 Image(systemName: imageIcon)
                     .font(.system(size: 40))
-                    .foregroundColor(.white.opacity(0.3))
+                    .foregroundColor(.white.opacity(0.55))
             }
 
             VStack(alignment: .leading, spacing: 6) {
@@ -1732,7 +1709,7 @@ struct ArticleCard: View {
 
                 Text(readTime)
                     .font(.system(size: 11, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
             }
         }
         .padding(12)
@@ -1813,7 +1790,7 @@ struct CommunityCard: View {
                 HStack(spacing: 12) {
                     Text(timeAgo)
                         .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(.white.opacity(0.4))
+                        .foregroundColor(.white.opacity(0.65))
 
                     HStack(spacing: 4) {
                         Image(systemName: "heart.fill")
@@ -1821,7 +1798,7 @@ struct CommunityCard: View {
                         Text("\(likes)")
                             .font(.system(size: 12, design: .rounded))
                     }
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(.white.opacity(0.65))
                 }
             }
 
@@ -1898,7 +1875,7 @@ struct ClubhouseHoursSection: View {
 
                 Text("• Closes at 11:00 PM")
                     .font(.system(size: 14, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
             }
         }
     }
@@ -1918,7 +1895,7 @@ struct HoursRow: View {
 
             Text(hours)
                 .font(.system(size: 14, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
         }
     }
 }

@@ -145,12 +145,12 @@ struct NicknameStep: View {
 
                 Text("This will be displayed on your membership card")
                     .font(.system(size: 14, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
             }
 
             // Nickname input
             VStack(spacing: 8) {
-                TextField("", text: $nickname, prompt: Text("Enter nickname").foregroundColor(.white.opacity(0.3)))
+                TextField("", text: $nickname, prompt: Text("Enter nickname").foregroundColor(.white.opacity(0.55)))
                     .font(.system(size: 20, weight: .semibold, design: .rounded))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
@@ -173,7 +173,7 @@ struct NicknameStep: View {
 
                 Text("\(nickname.count)/20 characters")
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(.white.opacity(0.65))
             }
             .padding(.horizontal, 40)
 
@@ -199,7 +199,7 @@ struct AvatarSelectionStep: View {
 
             Text("Select your profile avatar from your NFTs")
                 .font(.system(size: 14, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)
 
@@ -250,7 +250,7 @@ struct AvatarNFTCard: View {
 
                     Image(systemName: "face.smiling")
                         .font(.system(size: 50))
-                        .foregroundColor(.white.opacity(0.3))
+                        .foregroundColor(.white.opacity(0.55))
 
                     if isSelected {
                         RoundedRectangle(cornerRadius: 16)
@@ -336,7 +336,7 @@ struct SocialConnectionStep: View {
 
                 Text("Optional - You can always do this later")
                     .font(.system(size: 14, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
             }
 
             // Social buttons

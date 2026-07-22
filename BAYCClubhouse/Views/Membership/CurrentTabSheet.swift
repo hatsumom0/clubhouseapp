@@ -122,7 +122,7 @@ struct CurrentTabSheet: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text("Delivery Location")
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
 
                 Text(order.location.displayName)
                     .font(.system(size: 15, weight: .semibold, design: .rounded))
@@ -145,7 +145,7 @@ struct CurrentTabSheet: View {
             HStack {
                 Text("Items")
                     .font(.system(size: 14, weight: .semibold, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
 
                 Spacer()
 
@@ -183,7 +183,7 @@ struct CurrentTabSheet: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Being Prepared")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             ForEach(order.currentlyWorking) { item in
                 HStack(spacing: 12) {
@@ -197,7 +197,7 @@ struct CurrentTabSheet: View {
 
                         Text("making \(item.itemName)")
                             .font(.system(size: 13, design: .rounded))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
 
                     Spacer()
@@ -220,7 +220,7 @@ struct CurrentTabSheet: View {
             HStack {
                 Text("Subtotal")
                     .font(.system(size: 14, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
                 Spacer()
                 Text(order.formattedSubtotal)
                     .font(.system(size: 14, weight: .medium, design: .rounded))
@@ -310,7 +310,7 @@ struct CurrentTabSheet: View {
         VStack(spacing: 20) {
             Image(systemName: "takeoutbag.and.cup.and.straw")
                 .font(.system(size: 60))
-                .foregroundColor(.white.opacity(0.3))
+                .foregroundColor(.white.opacity(0.55))
 
             Text("No Open Tab")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
@@ -318,7 +318,7 @@ struct CurrentTabSheet: View {
 
             Text("Order some food or drinks to start a tab")
                 .font(.system(size: 14, design: .rounded))
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
         }
     }
 }
@@ -358,7 +358,7 @@ struct TabItemRow: View {
                 if let notes = item.notes, !notes.isEmpty {
                     Text(notes)
                         .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
                 }
             }
 
@@ -372,7 +372,7 @@ struct TabItemRow: View {
                     } label: {
                         Image(systemName: "minus.circle")
                             .font(.system(size: 20))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
 
                     Text("\(item.quantity)")
@@ -391,7 +391,7 @@ struct TabItemRow: View {
             } else {
                 Text("x\(item.quantity)")
                     .font(.system(size: 14, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
             }
 
             Text(item.formattedLineTotal)

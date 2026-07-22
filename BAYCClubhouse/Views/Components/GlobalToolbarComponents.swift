@@ -234,7 +234,7 @@ struct QuickAccessSheet: View {
                                     if let checkIn = accessService.lastCheckIn {
                                         Text("Since \(checkIn.formatted(date: .omitted, time: .shortened))")
                                             .font(.system(size: 13, design: .rounded))
-                                            .foregroundColor(.white.opacity(0.6))
+                                            .foregroundColor(.white.opacity(0.78))
                                     }
                                 }
 
@@ -279,7 +279,7 @@ struct QuickAccessSheet: View {
                             Text("Tap your phone at the locker or door for instant access")
                                 .font(.system(size: 12, design: .rounded))
                         }
-                        .foregroundColor(.white.opacity(0.4))
+                        .foregroundColor(.white.opacity(0.65))
                         .padding(.top, 8)
                     }
                     .padding(20)
@@ -331,7 +331,7 @@ struct LockerQuickAccessCard: View {
 
                     Text(locker.floor)
                         .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
                 }
                 .frame(width: 100)
 
@@ -339,7 +339,7 @@ struct LockerQuickAccessCard: View {
                 VStack(spacing: 4) {
                     Text("CODE")
                         .font(.system(size: 10, weight: .bold, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
 
                     Button {
                         withAnimation { showingCode.toggle() }
@@ -351,7 +351,7 @@ struct LockerQuickAccessCard: View {
 
                     Text(showingCode ? "Tap to hide" : "Tap to reveal")
                         .font(.system(size: 10, design: .rounded))
-                        .foregroundColor(.white.opacity(0.4))
+                        .foregroundColor(.white.opacity(0.65))
                 }
                 .frame(maxWidth: .infinity)
             }
@@ -460,7 +460,7 @@ struct NFCMembershipShortcutCard: View {
 
                     Text("Tap to open Apple Wallet")
                         .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
 
                     if let locker = accessService.currentLocker {
                         Text("Includes locker \(locker.displayNumber) access")
@@ -473,7 +473,7 @@ struct NFCMembershipShortcutCard: View {
 
                 Image(systemName: "chevron.right")
                     .font(.system(size: 16))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(.white.opacity(0.65))
             }
             .padding(16)
             .glassCard(cornerRadius: 18)

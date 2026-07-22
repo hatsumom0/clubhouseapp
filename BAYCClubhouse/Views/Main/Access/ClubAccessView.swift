@@ -103,7 +103,7 @@ struct AtClubhouseBanner: View {
                 if let checkIn = lastCheckIn {
                     Text("Checked in \(checkIn.formatted(date: .omitted, time: .shortened))")
                         .font(.system(size: 13, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
                 }
             }
 
@@ -209,7 +209,7 @@ struct QuickAccessActions: View {
 
                     Text("Request")
                         .font(.system(size: 11, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
@@ -241,7 +241,7 @@ struct QRCodeEntryCard: View {
 
                     Text("Show at entrance for quick access")
                         .font(.system(size: 13, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
                 }
 
                 Spacer()
@@ -250,7 +250,7 @@ struct QRCodeEntryCard: View {
                 VStack(alignment: .trailing, spacing: 2) {
                     Text("Refreshes in")
                         .font(.system(size: 10, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
 
                     Text(formatTime(timeRemaining))
                         .font(.system(size: 14, weight: .bold, design: .monospaced))
@@ -287,7 +287,7 @@ struct QRCodeEntryCard: View {
 
                     Text("\(authViewModel.membershipTier.displayName) Member")
                         .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
                 }
 
                 Spacer()
@@ -311,7 +311,7 @@ struct QRCodeEntryCard: View {
                 Text("Cryptographically signed • Single use")
                     .font(.system(size: 11, design: .rounded))
             }
-            .foregroundColor(.white.opacity(0.4))
+            .foregroundColor(.white.opacity(0.65))
         }
         .padding(20)
         .background(
@@ -410,7 +410,7 @@ struct LockerAccessCard: View {
                     VStack(spacing: 4) {
                         Text("LOCKER")
                             .font(.system(size: 10, weight: .bold, design: .rounded))
-                            .foregroundColor(.white.opacity(0.5))
+                            .foregroundColor(.white.opacity(0.72))
 
                         Text(locker.displayNumber)
                             .font(.system(size: 32, weight: .bold, design: .rounded))
@@ -418,7 +418,7 @@ struct LockerAccessCard: View {
 
                         Text(locker.floor)
                             .font(.system(size: 11, design: .rounded))
-                            .foregroundColor(.white.opacity(0.5))
+                            .foregroundColor(.white.opacity(0.72))
                     }
                     .frame(width: 100)
                     .padding(.vertical, 16)
@@ -431,7 +431,7 @@ struct LockerAccessCard: View {
                     VStack(spacing: 4) {
                         Text("ACCESS CODE")
                             .font(.system(size: 10, weight: .bold, design: .rounded))
-                            .foregroundColor(.white.opacity(0.5))
+                            .foregroundColor(.white.opacity(0.72))
 
                         if showingCode {
                             Text(locker.accessCode)
@@ -440,7 +440,7 @@ struct LockerAccessCard: View {
                         } else {
                             Text("••••")
                                 .font(.system(size: 32, weight: .bold, design: .monospaced))
-                                .foregroundColor(.white.opacity(0.3))
+                                .foregroundColor(.white.opacity(0.55))
                         }
 
                         Button {
@@ -487,7 +487,7 @@ struct LockerAccessCard: View {
                 VStack(spacing: 12) {
                     Text("No locker assigned")
                         .font(.system(size: 14, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
 
                     Button {
                         isAssigning = true
@@ -581,12 +581,12 @@ struct ValetStatusCard: View {
 
                         Text("Ticket: \(request.ticketNumber)")
                             .font(.system(size: 13, design: .monospaced))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
 
                         if let valet = request.assignedValet {
                             Text("Valet: \(valet)")
                                 .font(.system(size: 12, design: .rounded))
-                                .foregroundColor(.white.opacity(0.5))
+                                .foregroundColor(.white.opacity(0.72))
                         }
                     }
 
@@ -607,7 +607,7 @@ struct ValetStatusCard: View {
                         if request.status == .inProgress {
                             Text("Bringing your car...")
                                 .font(.system(size: 12, design: .rounded))
-                                .foregroundColor(.white.opacity(0.6))
+                                .foregroundColor(.white.opacity(0.78))
                         }
                     }
                 }
@@ -705,7 +705,7 @@ struct AccessInfoRow: View {
 
             Text(detail)
                 .font(.system(size: 13, design: .rounded))
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
         }
     }
 }
@@ -752,7 +752,7 @@ struct ArrivalNotificationSheet: View {
 
                         Text("Let the club know you're on your way")
                             .font(.system(size: 14, design: .rounded))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
 
                         // ETA Slider
                         VStack(alignment: .leading, spacing: 12) {
@@ -962,7 +962,7 @@ struct ValetRequestSheet: View {
                                 VStack(spacing: 16) {
                                     Text("Your vehicle")
                                         .font(.system(size: 14, weight: .medium, design: .rounded))
-                                        .foregroundColor(.white.opacity(0.6))
+                                        .foregroundColor(.white.opacity(0.78))
 
                                     Text(request.vehicleInfo.displayName)
                                         .font(.system(size: 20, weight: .bold, design: .rounded))
@@ -978,7 +978,7 @@ struct ValetRequestSheet: View {
                             } else {
                                 Text("No vehicle currently parked with valet")
                                     .font(.system(size: 14, design: .rounded))
-                                    .foregroundColor(.white.opacity(0.6))
+                                    .foregroundColor(.white.opacity(0.78))
                                     .padding(24)
                             }
                         }

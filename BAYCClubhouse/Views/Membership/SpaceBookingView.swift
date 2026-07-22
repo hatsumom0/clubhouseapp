@@ -89,7 +89,7 @@ struct SpaceBookingView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Space Type")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             HStack(spacing: 12) {
                 ForEach(SpaceBooking.SpaceType.allCases, id: \.self) { type in
@@ -149,7 +149,7 @@ struct SpaceBookingView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Date")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             DatePicker(
                 "",
@@ -171,13 +171,13 @@ struct SpaceBookingView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Time")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             HStack(spacing: 16) {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Start")
                         .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
 
                     DatePicker("", selection: $selectedStartTime, displayedComponents: .hourAndMinute)
                         .labelsHidden()
@@ -194,7 +194,7 @@ struct SpaceBookingView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("End")
                         .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
 
                     DatePicker("", selection: $selectedEndTime, displayedComponents: .hourAndMinute)
                         .labelsHidden()
@@ -225,7 +225,7 @@ struct SpaceBookingView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Available Spaces")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             let spaces = selectedType == .cabana ?
                 AvailableSpace.sampleCabanas : AvailableSpace.sampleMeetingRooms
@@ -250,7 +250,7 @@ struct SpaceBookingView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Number of Guests")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             HStack {
                 Button {
@@ -285,7 +285,7 @@ struct SpaceBookingView: View {
             if let space = selectedSpace {
                 Text("Max: \(space.maxGuests) guests")
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
             }
         }
     }
@@ -296,7 +296,7 @@ struct SpaceBookingView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Special Requests (Optional)")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             TextField("E.g., Extra towels, champagne on ice...", text: $specialRequests, axis: .vertical)
                 .textFieldStyle(.plain)
@@ -322,7 +322,7 @@ struct SpaceBookingView: View {
             HStack {
                 Text("Hourly Rate")
                     .font(.system(size: 14, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
                 Spacer()
                 Text("$\(String(format: "%.0f", selectedType.hourlyRate))/hr")
                     .font(.system(size: 14, weight: .medium, design: .rounded))
@@ -332,7 +332,7 @@ struct SpaceBookingView: View {
             HStack {
                 Text("Duration")
                     .font(.system(size: 14, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
                 Spacer()
                 Text("\(String(format: "%.1f", duration)) hours")
                     .font(.system(size: 14, weight: .medium, design: .rounded))
@@ -422,7 +422,7 @@ struct SpaceOptionCard: View {
 
                         Text(space.floor)
                             .font(.system(size: 13, design: .rounded))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
 
                     Spacer()
@@ -455,7 +455,7 @@ struct SpaceOptionCard: View {
                     Text("Up to \(space.maxGuests) guests")
                         .font(.system(size: 12, design: .rounded))
                 }
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
             }
             .padding(16)
             .background(
@@ -589,12 +589,12 @@ struct ConfirmationRow: View {
         HStack {
             Image(systemName: icon)
                 .font(.system(size: 16))
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
                 .frame(width: 24)
 
             Text(label)
                 .font(.system(size: 14, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             Spacer()
 

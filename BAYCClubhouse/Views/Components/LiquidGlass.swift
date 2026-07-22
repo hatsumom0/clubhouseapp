@@ -9,11 +9,22 @@ import SwiftUI
 // transparency automatically — so converted call sites should NOT keep
 // their own stroke/highlight overlays.
 
+/// Brand glass constants.
+enum ClubhouseGlass {
+    /// Brand-dark default tint for content cards: keeps white text readable
+    /// over glass in the system "Clear" appearance while still composing
+    /// with the user's iOS 26.1+ Clear/Tinted Liquid Glass setting (and the
+    /// iOS 27 glass refresh) — system glass adapts underneath our tint.
+    static let cardTint = Color(hex: "16213e").opacity(0.4)
+}
+
 extension View {
     /// Standard card surface: system Liquid Glass in a rounded rectangle.
+    /// Defaults to the dark brand tint; pass `tint: nil` explicitly for
+    /// pure untinted glass (chrome, floating controls).
     func glassCard(
         cornerRadius: CGFloat = 22,
-        tint: Color? = nil,
+        tint: Color? = ClubhouseGlass.cardTint,
         interactive: Bool = false
     ) -> some View {
         glassEffect(

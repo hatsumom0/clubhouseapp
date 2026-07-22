@@ -105,7 +105,7 @@ struct PaymentSheet: View {
         VStack(spacing: 8) {
             Text("Subtotal")
                 .font(.system(size: 14, design: .rounded))
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
 
             Text("$\(String(format: "%.2f", amount))")
                 .font(.system(size: 48, weight: .bold, design: .rounded))
@@ -113,7 +113,7 @@ struct PaymentSheet: View {
 
             Text(itemDescription)
                 .font(.system(size: 14, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
         }
         .padding(.vertical, 20)
     }
@@ -124,7 +124,7 @@ struct PaymentSheet: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Add a Tip")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             // Tip percentage options
             HStack(spacing: 10) {
@@ -188,7 +188,7 @@ struct PaymentSheet: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Payment Method")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             ForEach(PaymentMethod.allCases, id: \.self) { method in
                 PaymentMethodRow(
@@ -208,7 +208,7 @@ struct PaymentSheet: View {
             HStack {
                 Text("Subtotal")
                     .font(.system(size: 14, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
                 Spacer()
                 Text("$\(String(format: "%.2f", amount))")
                     .font(.system(size: 14, design: .rounded))
@@ -218,7 +218,7 @@ struct PaymentSheet: View {
             HStack {
                 Text("Tip")
                     .font(.system(size: 14, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
                 Spacer()
                 Text("$\(String(format: "%.2f", tipAmount))")
                     .font(.system(size: 14, design: .rounded))
@@ -308,7 +308,7 @@ struct PaymentSheet: View {
 
                 Text("$\(String(format: "%.2f", totalAmount)) paid via \(selectedPaymentMethod.rawValue)")
                     .font(.system(size: 15, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
             }
 
             Spacer()
@@ -481,7 +481,7 @@ struct PaymentMethodRow: View {
 
                     Text(method.description)
                         .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
                 }
 
                 Spacer()
@@ -570,7 +570,7 @@ struct GlyphWalletSheet: View {
 
                         Text("Amount due: $\(String(format: "%.2f", amount))")
                             .font(.system(size: 14, design: .rounded))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
                     .padding(.top, 20)
 
@@ -639,7 +639,7 @@ struct CurrencyRow: View {
 
                     Text("\(currency.formattedBalance) \(currency.symbol)")
                         .font(.system(size: 13, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
                 }
 
                 Spacer()
@@ -663,7 +663,7 @@ struct CurrencyRow: View {
 
                 Image(systemName: "chevron.right")
                     .font(.system(size: 14))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(.white.opacity(0.65))
             }
             .padding(16)
             .background(

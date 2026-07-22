@@ -154,7 +154,7 @@ struct ProfileHeaderCard: View {
                         Text(walletAddress.prefix(6) + "..." + walletAddress.suffix(4))
                             .font(.system(size: 14, weight: .medium, design: .monospaced))
                     }
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
                 }
             }
 
@@ -228,7 +228,7 @@ struct ConnectedWalletSection: View {
                     if let address = authViewModel.walletAddress {
                         Text(address.prefix(8) + "..." + address.suffix(6))
                             .font(.system(size: 12, design: .monospaced))
-                            .foregroundColor(.white.opacity(0.5))
+                            .foregroundColor(.white.opacity(0.72))
                     }
                 }
 
@@ -328,7 +328,7 @@ struct SocialConnectionRow: View {
 
                 Text(username)
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
             }
 
             Spacer()
@@ -381,15 +381,15 @@ struct NFTGallerySection: View {
                 VStack(spacing: 12) {
                     Image(systemName: "photo.on.rectangle.angled")
                         .font(.system(size: 40))
-                        .foregroundColor(.white.opacity(0.3))
+                        .foregroundColor(.white.opacity(0.55))
 
                     Text("No NFTs found")
                         .font(.system(size: 14, weight: .medium, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
 
                     Text("Connect a wallet with BAYC or MAYC NFTs")
                         .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(.white.opacity(0.4))
+                        .foregroundColor(.white.opacity(0.65))
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 30)
@@ -516,7 +516,7 @@ struct NFTPlaceholder: View {
             .overlay(
                 Image(systemName: "face.smiling")
                     .font(.system(size: 40))
-                    .foregroundColor(.white.opacity(0.3))
+                    .foregroundColor(.white.opacity(0.55))
             )
     }
 }
@@ -546,7 +546,7 @@ struct NFTSelectorView: View {
                     VStack(spacing: 16) {
                         Image(systemName: "photo.on.rectangle.angled")
                             .font(.system(size: 60))
-                            .foregroundColor(.white.opacity(0.3))
+                            .foregroundColor(.white.opacity(0.55))
 
                         Text("No NFTs Found")
                             .font(.system(size: 20, weight: .bold, design: .rounded))
@@ -554,7 +554,7 @@ struct NFTSelectorView: View {
 
                         Text("Connect a wallet with BAYC or MAYC NFTs to select your profile picture")
                             .font(.system(size: 14, design: .rounded))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 40)
                     }
@@ -563,7 +563,7 @@ struct NFTSelectorView: View {
                         VStack(spacing: 20) {
                             Text("Select an NFT as your profile picture. This will be displayed on your membership card.")
                                 .font(.system(size: 14, design: .rounded))
-                                .foregroundColor(.white.opacity(0.6))
+                                .foregroundColor(.white.opacity(0.78))
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 20)
 
@@ -675,7 +675,7 @@ struct NFTSelectorCard: View {
 
                     Text(nft.collection.displayName)
                         .font(.system(size: 11, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
 
                     if isSelected {
                         HStack(spacing: 4) {
@@ -719,7 +719,7 @@ struct NFTSelectorPlaceholder: View {
             .overlay(
                 Image(systemName: "face.smiling")
                     .font(.system(size: 50))
-                    .foregroundColor(.white.opacity(0.3))
+                    .foregroundColor(.white.opacity(0.55))
             )
     }
 }
@@ -766,7 +766,7 @@ struct SettingsRow: View {
             } else {
                 Image(systemName: "chevron.right")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(.white.opacity(0.65))
             }
         }
         .padding(16)
@@ -1021,7 +1021,7 @@ struct ProfilePhotoEditSection: View {
 
             Text("Tap to change photo")
                 .font(.system(size: 13, design: .rounded))
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
         }
         .padding(.vertical, 8)
     }
@@ -1057,7 +1057,7 @@ struct BasicInfoSection: View {
 
                         Text("Bio")
                             .font(.system(size: 14, weight: .medium, design: .rounded))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
                     }
 
                     TextEditor(text: $bio)
@@ -1075,7 +1075,7 @@ struct BasicInfoSection: View {
                                 if bio.isEmpty {
                                     Text("Tell us about yourself...")
                                         .font(.system(size: 15, design: .rounded))
-                                        .foregroundColor(.white.opacity(0.3))
+                                        .foregroundColor(.white.opacity(0.55))
                                         .padding(.horizontal, 16)
                                         .padding(.vertical, 20)
                                         .allowsHitTesting(false)
@@ -1175,7 +1175,7 @@ struct SocialLinkField: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(platform)
                     .font(.system(size: 12, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
 
                 TextField(placeholder, text: $text)
                     .font(.system(size: 15, design: .rounded))
@@ -1253,10 +1253,10 @@ struct NFTAvatarSection: View {
                     VStack(spacing: 8) {
                         Image(systemName: "photo.on.rectangle.angled")
                             .font(.system(size: 24))
-                            .foregroundColor(.white.opacity(0.3))
+                            .foregroundColor(.white.opacity(0.55))
                         Text("No NFTs found")
                             .font(.system(size: 13, design: .rounded))
-                            .foregroundColor(.white.opacity(0.4))
+                            .foregroundColor(.white.opacity(0.65))
                     }
                     .padding(.vertical, 20)
                     Spacer()
@@ -1419,7 +1419,7 @@ struct NFTAvatarOption: View {
             .overlay(
                 Image(systemName: "photo")
                     .font(.system(size: 24))
-                    .foregroundColor(.white.opacity(0.3))
+                    .foregroundColor(.white.opacity(0.55))
             )
     }
 }
@@ -1494,15 +1494,15 @@ struct NFTPickerSheet: View {
                     VStack(spacing: 16) {
                         Image(systemName: "photo.on.rectangle.angled")
                             .font(.system(size: 48))
-                            .foregroundColor(.white.opacity(0.3))
+                            .foregroundColor(.white.opacity(0.55))
 
                         Text("No NFTs Found")
                             .font(.system(size: 18, weight: .semibold, design: .rounded))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.78))
 
                         Text("Connect your wallet to see your BAYC and MAYC NFTs")
                             .font(.system(size: 14, design: .rounded))
-                            .foregroundColor(.white.opacity(0.4))
+                            .foregroundColor(.white.opacity(0.65))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 40)
 
@@ -1721,7 +1721,7 @@ struct NFTPickerCard: View {
             .overlay(
                 Image(systemName: "photo")
                     .font(.system(size: 32))
-                    .foregroundColor(.white.opacity(0.3))
+                    .foregroundColor(.white.opacity(0.55))
             )
     }
 }

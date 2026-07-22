@@ -186,7 +186,7 @@ struct ChatHeader: View {
                 ZStack {
                     Image(systemName: "tray.fill")
                         .font(.system(size: 20))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
 
                     if chatManager.unreadInboxCount > 0 {
                         Circle()
@@ -208,7 +208,7 @@ struct ChatHeader: View {
             } label: {
                 Image(systemName: "minus.circle.fill")
                     .font(.system(size: 24))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
             }
 
             // Close button
@@ -217,7 +217,7 @@ struct ChatHeader: View {
             } label: {
                 Image(systemName: "xmark.circle.fill")
                     .font(.system(size: 24))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
             }
         }
         .padding(16)
@@ -287,7 +287,7 @@ struct ChatMessageBubble: View {
 
                 Text(timeString)
                     .font(.system(size: 10, design: .rounded))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(.white.opacity(0.65))
             }
 
             if !message.isFromUser {
@@ -466,7 +466,7 @@ struct ChatEventInviteCard: View {
                     Text("by \(organizerName)")
                         .font(.system(size: 11, design: .rounded))
                 }
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
             }
 
             // Spots left
@@ -645,7 +645,7 @@ struct ChatInputField: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            TextField("", text: $messageText, prompt: Text("Type a message...").foregroundColor(.white.opacity(0.4)))
+            TextField("", text: $messageText, prompt: Text("Type a message...").foregroundColor(.white.opacity(0.65)))
                 .font(.system(size: 15, design: .rounded))
                 .foregroundColor(.white)
                 .padding(.horizontal, 16)
@@ -934,15 +934,15 @@ struct DirectMessagesTab: View {
             VStack(spacing: 16) {
                 Image(systemName: "tray")
                     .font(.system(size: 48))
-                    .foregroundColor(.white.opacity(0.3))
+                    .foregroundColor(.white.opacity(0.55))
 
                 Text("No Messages")
                     .font(.system(size: 18, weight: .semibold, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
 
                 Text("Messages from your relationship manager will appear here")
                     .font(.system(size: 14, design: .rounded))
-                    .foregroundColor(.white.opacity(0.3))
+                    .foregroundColor(.white.opacity(0.55))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 40)
             }
@@ -972,15 +972,15 @@ struct EventGroupChatsTab: View {
             VStack(spacing: 16) {
                 Image(systemName: "person.3.fill")
                     .font(.system(size: 48))
-                    .foregroundColor(.white.opacity(0.3))
+                    .foregroundColor(.white.opacity(0.55))
 
                 Text("No Event Chats")
                     .font(.system(size: 18, weight: .semibold, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(.white.opacity(0.72))
 
                 Text("When you RSVP to events, you'll be able to chat with other attendees here")
                     .font(.system(size: 14, design: .rounded))
-                    .foregroundColor(.white.opacity(0.3))
+                    .foregroundColor(.white.opacity(0.55))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 40)
             }
@@ -1053,12 +1053,12 @@ struct EventGroupChatRow: View {
                     Text(chat.formattedEventDate)
                         .font(.system(size: 12, design: .rounded))
                 }
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(.white.opacity(0.72))
 
                 if let lastMessage = chat.lastMessage {
                     Text("\(lastMessage.senderName): \(lastMessage.content)")
                         .font(.system(size: 13, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
                         .lineLimit(1)
                 }
             }
@@ -1067,7 +1067,7 @@ struct EventGroupChatRow: View {
 
             Image(systemName: "chevron.right")
                 .font(.system(size: 14))
-                .foregroundColor(.white.opacity(0.3))
+                .foregroundColor(.white.opacity(0.55))
         }
         .padding(14)
         .background(
@@ -1164,7 +1164,7 @@ struct EventGroupChatView: View {
 
                     Text("\(chat.participants.count) members")
                         .font(.system(size: 11, design: .rounded))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.72))
                 }
             }
         }
@@ -1202,7 +1202,7 @@ struct EventGroupChatHeader: View {
 
             Text(chat.formattedEventDate)
                 .font(.system(size: 14, design: .rounded))
-                .foregroundColor(.white.opacity(0.6))
+                .foregroundColor(.white.opacity(0.78))
 
             // Participants
             HStack(spacing: -8) {
@@ -1285,7 +1285,7 @@ struct GroupChatMessageBubble: View {
                 if !message.isFromCurrentUser {
                     Text(message.senderName)
                         .font(.system(size: 11, weight: .semibold, design: .rounded))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.white.opacity(0.78))
                 }
 
                 Text(message.content)
@@ -1302,7 +1302,7 @@ struct GroupChatMessageBubble: View {
 
                 Text(timeString)
                     .font(.system(size: 10, design: .rounded))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(.white.opacity(0.65))
             }
 
             if message.isFromCurrentUser {
@@ -1369,7 +1369,7 @@ struct InboxMessageRow: View {
 
                     Text(timeAgoString(from: message.timestamp))
                         .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(.white.opacity(0.4))
+                        .foregroundColor(.white.opacity(0.65))
                 }
 
                 Text(message.senderRole)
@@ -1378,13 +1378,13 @@ struct InboxMessageRow: View {
 
                 Text(message.content)
                     .font(.system(size: 13, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.78))
                     .lineLimit(2)
             }
 
             Image(systemName: "chevron.right")
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.white.opacity(0.3))
+                .foregroundColor(.white.opacity(0.55))
         }
         .padding(14)
         .background(
@@ -1490,7 +1490,7 @@ struct InboxThreadView: View {
 
                 // Reply input
                 HStack(spacing: 12) {
-                    TextField("", text: $replyText, prompt: Text("Reply...").foregroundColor(.white.opacity(0.4)))
+                    TextField("", text: $replyText, prompt: Text("Reply...").foregroundColor(.white.opacity(0.65)))
                         .font(.system(size: 15, design: .rounded))
                         .foregroundColor(.white)
                         .padding(.horizontal, 16)
@@ -1572,7 +1572,7 @@ struct InboxThreadBubble: View {
 
                 Text(timeString)
                     .font(.system(size: 10, design: .rounded))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(.white.opacity(0.65))
             }
 
             if !isFromUser {
