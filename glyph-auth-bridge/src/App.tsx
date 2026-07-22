@@ -61,6 +61,7 @@ function Bridge() {
 
   const [phase, setPhase] = useState<Phase>("idle");
   const [error, setError] = useState<string | null>(null);
+  const [profileWaitExpired, setProfileWaitExpired] = useState(false);
   const startedRef = useRef(false);
 
   const returnToApp = (addr: string, signature: string, message: string) => {
@@ -103,13 +104,29 @@ function Bridge() {
     }
   };
 
-  // Once Glyph has connected a wallet, immediately ask for the ownership proof.
+  // The Glyph profile (which carries linkedWallets — where vaulted apes
+  // live) loads asynchronously after the SDK's own login signature. Give it
+  // up to 15s before proceeding with just the signing wallet.
   useEffect(() => {
-    if (address && accountStatus === "connected" && phase === "idle") {
+    if (address && accountStatus === "connected" && !user && !profileWaitExpired) {
+      const timer = setTimeout(() => setProfileWaitExpired(true), 15_000);
+      return () => clearTimeout(timer);
+    }
+  }, [address, accountStatus, user, profileWaitExpired]);
+
+  // Once the wallet is connected AND the profile is loaded (or the wait
+  // expired), ask for the ownership proof and return to the app.
+  useEffect(() => {
+    if (
+      address &&
+      accountStatus === "connected" &&
+      phase === "idle" &&
+      (user || profileWaitExpired)
+    ) {
       void signAndReturn(address);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [address, accountStatus]);
+  }, [address, accountStatus, user, profileWaitExpired]);
 
   const onConnect = async () => {
     setPhase("connecting");
@@ -146,6 +163,10 @@ function Bridge() {
             </button>
             <p style={styles.fine}>X, email or wallet · Powered by Glyph</p>
           </>
+        )}
+
+        {address && phase === "idle" && !user && (
+          <p style={styles.copy}>Loading your Glyph profile…</p>
         )}
 
         {address && phase === "signing" && (
@@ -201,8 +222,10 @@ function Bridge() {
 }
 
 export default function App() {
+  // askForSignature=true authenticates the session with Glyph's backend —
+  // required for the user profile (incl. linkedWallets) to load.
   return (
-    <GlyphWalletProvider askForSignature={false}>
+    <GlyphWalletProvider askForSignature={true}>
       <Bridge />
     </GlyphWalletProvider>
   );
