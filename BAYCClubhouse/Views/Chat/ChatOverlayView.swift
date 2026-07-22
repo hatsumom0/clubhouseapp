@@ -1135,10 +1135,7 @@ struct EventGroupChatView: View {
                 HStack(spacing: 12) {
                     TextField("Message the group...", text: $messageText)
                         .padding(12)
-                        .background(
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(.ultraThinMaterial)
-                        )
+                        .glassCard(cornerRadius: 20)
                         .foregroundColor(.white)
                         .focused($isInputFocused)
 

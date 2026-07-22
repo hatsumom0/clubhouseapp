@@ -137,14 +137,7 @@ struct WeatherWidget: View {
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
-        .background(
-            RoundedRectangle(cornerRadius: 14)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 14)
-                        .stroke(Color.white.opacity(0.15), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 14)
     }
 }
 
@@ -693,14 +686,7 @@ struct ScheduleStatCard: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 20)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(color.opacity(0.3), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 18)
     }
 }
 
@@ -797,14 +783,7 @@ struct ScheduleEventCard: View {
                 .foregroundColor(.white.opacity(0.4))
         }
         .padding(14)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 18)
     }
 }
 
@@ -867,14 +846,7 @@ struct ScheduleReservationCard: View {
                 .foregroundColor(.white.opacity(0.4))
         }
         .padding(14)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 18)
     }
 }
 
@@ -1098,14 +1070,7 @@ struct WeatherDetailTile: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 16)
     }
 }
 
@@ -1181,14 +1146,7 @@ struct ForecastSection: View {
                 }
             }
             .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 18)
         }
     }
 
@@ -1267,14 +1225,7 @@ struct WeatherSuggestionsSection: View {
                             Spacer()
                         }
                         .padding(12)
-                        .background(
-                            RoundedRectangle(cornerRadius: 14)
-                                .fill(.ultraThinMaterial)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 14)
-                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                                )
-                        )
+                        .glassCard(cornerRadius: 14)
                     }
                 }
             }
@@ -1709,14 +1660,7 @@ struct NewsCard: View {
             }
         }
         .padding(14)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 18)
     }
 }
 
@@ -1792,14 +1736,7 @@ struct ArticleCard: View {
             }
         }
         .padding(12)
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 20)
     }
 }
 
@@ -1891,14 +1828,7 @@ struct CommunityCard: View {
             Spacer()
         }
         .padding(12)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 16)
     }
 }
 
@@ -1938,14 +1868,7 @@ struct PerkCard: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 20)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 18)
     }
 }
 
@@ -1962,14 +1885,7 @@ struct ClubhouseHoursSection: View {
                 HoursRow(day: "Sunday", hours: "11:00 AM - 10:00 PM")
             }
             .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 20)
 
             HStack(spacing: 10) {
                 Circle()

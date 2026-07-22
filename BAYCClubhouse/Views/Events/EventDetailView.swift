@@ -372,14 +372,7 @@ struct TokenProofVerificationView: View {
                         )
                     }
                     .padding(20)
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(.ultraThinMaterial)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                            )
-                    )
+                    .glassCard(cornerRadius: 20)
                     .padding(.horizontal, 40)
                 }
 
@@ -644,14 +637,7 @@ struct QuickInfoCard: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 16)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 18)
     }
 }
 
@@ -687,14 +673,7 @@ struct EventDescriptionSection: View {
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 18)
     }
 }
 
@@ -753,14 +732,7 @@ struct EventOrganizerSection: View {
             }
         }
         .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 18)
     }
 }
 
@@ -836,14 +808,7 @@ struct EventAttendeesSection: View {
             }
         }
         .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 18)
     }
 
     private var attendeeNamesString: String {

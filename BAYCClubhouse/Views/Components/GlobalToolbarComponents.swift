@@ -476,14 +476,7 @@ struct NFCMembershipShortcutCard: View {
                     .foregroundColor(.white.opacity(0.4))
             }
             .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.white.opacity(0.15), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 18)
         }
     }
 }

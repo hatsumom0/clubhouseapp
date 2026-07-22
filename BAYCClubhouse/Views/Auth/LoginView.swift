@@ -41,19 +41,9 @@ struct LoginView: View {
                 VStack(spacing: 20) {
                     ZStack {
                         Circle()
-                            .fill(.ultraThinMaterial)
+                            .fill(.clear)
                             .frame(width: 120, height: 120)
-                            .overlay(
-                                Circle()
-                                    .stroke(
-                                        LinearGradient(
-                                            colors: [.white.opacity(0.3), .clear],
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        ),
-                                        lineWidth: 1
-                                    )
-                            )
+                            .glassCircle()
 
                         Image(systemName: "face.smiling")
                             .font(.system(size: 60, weight: .thin))
@@ -126,24 +116,10 @@ struct LoginView: View {
                             }
                         }
                         .padding(16)
-                        .background(
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 22)
-                                    .fill(.ultraThinMaterial)
-
-                                RoundedRectangle(cornerRadius: 22)
-                                    .fill(Color(hex: "8b5cf6").opacity(0.15))
-
-                                RoundedRectangle(cornerRadius: 22)
-                                    .stroke(
-                                        LinearGradient(
-                                            colors: [Color(hex: "8b5cf6").opacity(0.5), .clear],
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        ),
-                                        lineWidth: 1
-                                    )
-                            }
+                        .glassCard(
+                            cornerRadius: 22,
+                            tint: Color(hex: "8b5cf6").opacity(0.35),
+                            interactive: true
                         )
                         .shadow(color: Color(hex: "8b5cf6").opacity(0.3), radius: 15, y: 8)
                     }
@@ -179,14 +155,7 @@ struct LoginView: View {
                         .foregroundColor(.white.opacity(0.7))
                         .padding(.horizontal, 24)
                         .padding(.vertical, 14)
-                        .background(
-                            RoundedRectangle(cornerRadius: 18)
-                                .fill(.ultraThinMaterial)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 18)
-                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                                )
-                        )
+                        .glassCard(cornerRadius: 18)
                     }
                     .disabled(isConnecting)
                 }

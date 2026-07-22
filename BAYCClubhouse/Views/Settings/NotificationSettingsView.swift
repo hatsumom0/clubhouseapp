@@ -187,14 +187,7 @@ struct PushNotificationSection: View {
                     isOn: $notificationService.preferences.clubAnnouncements
                 )
             }
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 16)
         }
         .onChange(of: notificationService.preferences.eventReminders) { _, _ in
             notificationService.savePreferences()
@@ -297,14 +290,7 @@ struct LiveActivitySection: View {
                         isOn: $notificationService.preferences.enableLockerLiveActivity
                     )
                 }
-                .background(
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(.ultraThinMaterial)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                        )
-                )
+                .glassCard(cornerRadius: 16)
             }
         }
         .onChange(of: notificationService.preferences.enableValetLiveActivity) { _, _ in
@@ -352,14 +338,7 @@ struct EventReminderSection: View {
                     }
                 }
             }
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 16)
 
             Text("Select when you want to be reminded about upcoming events.")
                 .font(.caption)
@@ -443,14 +422,7 @@ struct QuietHoursSection: View {
                     .padding(.vertical, 12)
                 }
             }
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 16)
         }
         .onChange(of: notificationService.preferences.quietHoursEnabled) { _, _ in
             notificationService.savePreferences()

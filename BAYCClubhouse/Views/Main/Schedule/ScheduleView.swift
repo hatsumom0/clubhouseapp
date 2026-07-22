@@ -179,14 +179,7 @@ struct CalendarHeaderView: View {
                 .padding(.top, 4)
         }
         .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 24)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 24)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 24)
         .gesture(
             DragGesture()
                 .onChanged { value in
@@ -365,14 +358,7 @@ struct MyReservationsSection: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 30)
-                .background(
-                    RoundedRectangle(cornerRadius: 18)
-                        .fill(.ultraThinMaterial)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 18)
-                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                        )
-                )
+                .glassCard(cornerRadius: 18)
             } else {
                 VStack(spacing: 12) {
                     ForEach(eventManager.activeReservations.prefix(4)) { reservation in
@@ -451,14 +437,7 @@ struct ReservationCard: View {
                 .foregroundColor(.white.opacity(0.4))
         }
         .padding(14)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 18)
     }
 }
 
@@ -540,14 +519,7 @@ struct ReservationDetailView: View {
                             .foregroundColor(.red)
                             .frame(maxWidth: .infinity)
                             .padding(16)
-                            .background(
-                                RoundedRectangle(cornerRadius: 18)
-                                    .fill(.ultraThinMaterial)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 18)
-                                            .stroke(Color.red.opacity(0.3), lineWidth: 1)
-                                    )
-                            )
+                            .glassCard(cornerRadius: 18)
                         }
                     }
 
@@ -638,14 +610,7 @@ struct ReservationHeaderCard: View {
         }
         .padding(24)
         .frame(maxWidth: .infinity)
-        .background(
-            RoundedRectangle(cornerRadius: 24)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 24)
-                        .stroke(reservation.category.color.opacity(0.3), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 24)
     }
 }
 
@@ -719,14 +684,7 @@ struct ReservationDetailsSection: View {
                 }
             }
             .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 18)
         }
     }
 }
@@ -759,14 +717,7 @@ struct MyEventsSection: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 30)
-                .background(
-                    RoundedRectangle(cornerRadius: 18)
-                        .fill(.ultraThinMaterial)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 18)
-                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                        )
-                )
+                .glassCard(cornerRadius: 18)
             } else {
                 VStack(spacing: 12) {
                     ForEach(eventManager.mySchedule) { event in
@@ -863,14 +814,7 @@ struct AttendingEventCard: View {
                 )
         }
         .padding(14)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 18)
     }
 }
 
@@ -916,14 +860,7 @@ struct QuickBookCard: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 24)
-            .background(
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 18)
         }
         .buttonStyle(PlainButtonStyle())
     }

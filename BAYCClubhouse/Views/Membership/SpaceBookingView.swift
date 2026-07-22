@@ -161,10 +161,7 @@ struct SpaceBookingView: View {
             .tint(selectedType.color)
             .colorScheme(.dark)
             .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(.ultraThinMaterial)
-            )
+            .glassCard(cornerRadius: 16)
         }
     }
 
@@ -356,10 +353,7 @@ struct SpaceBookingView: View {
             }
         }
         .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(.ultraThinMaterial)
-        )
+        .glassCard(cornerRadius: 16)
     }
 
     // MARK: - Book Button
@@ -561,10 +555,7 @@ struct BookingConfirmationView: View {
                     ConfirmationRow(icon: "dollarsign.circle", label: "Total", value: booking.formattedTotalCost)
                 }
                 .padding(20)
-                .background(
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.ultraThinMaterial)
-                )
+                .glassCard(cornerRadius: 20)
                 .padding(.horizontal, 20)
 
                 Spacer()

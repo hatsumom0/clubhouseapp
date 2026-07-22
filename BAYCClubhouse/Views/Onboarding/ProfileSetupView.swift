@@ -412,14 +412,7 @@ struct SocialConnectButton: View {
                 }
             }
             .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 20)
         }
         .buttonStyle(PlainButtonStyle())
         .disabled(isConnected)
@@ -451,10 +444,7 @@ struct NavigationButtons: View {
                     .foregroundColor(.white.opacity(0.7))
                     .padding(.horizontal, 24)
                     .padding(.vertical, 16)
-                    .background(
-                        RoundedRectangle(cornerRadius: 18)
-                            .fill(.ultraThinMaterial)
-                    )
+                    .glassCard(cornerRadius: 18)
                 }
             }
 

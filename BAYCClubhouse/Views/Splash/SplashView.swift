@@ -108,34 +108,10 @@ struct SplashView: View {
                     .foregroundColor(.white)
                     .padding(.horizontal, 48)
                     .padding(.vertical, 20)
-                    .background(
-                        // Liquid Glass button effect
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 28)
-                                .fill(.ultraThinMaterial)
-
-                            RoundedRectangle(cornerRadius: 28)
-                                .fill(
-                                    LinearGradient(
-                                        colors: [
-                                            Color(hex: "f39c12").opacity(0.6),
-                                            Color(hex: "e74c3c").opacity(0.4)
-                                        ],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
-                                )
-
-                            RoundedRectangle(cornerRadius: 28)
-                                .stroke(
-                                    LinearGradient(
-                                        colors: [.white.opacity(0.5), .clear],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    ),
-                                    lineWidth: 1
-                                )
-                        }
+                    .glassCard(
+                        cornerRadius: 28,
+                        tint: Color(hex: "f39c12").opacity(0.55),
+                        interactive: true
                     )
                     .shadow(color: Color(hex: "f39c12").opacity(0.4), radius: 20, y: 10)
                 }

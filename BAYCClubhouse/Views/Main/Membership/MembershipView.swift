@@ -683,14 +683,7 @@ struct QuickActionsSection: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(
-                        RoundedRectangle(cornerRadius: 18)
-                            .fill(.ultraThinMaterial)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 18)
-                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                            )
-                    )
+                    .glassCard(cornerRadius: 18)
                 }
             }
 
@@ -1179,14 +1172,7 @@ struct ConciergeSection: View {
                         .foregroundColor(.white.opacity(0.4))
                 }
                 .padding(16)
-                .background(
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.ultraThinMaterial)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                        )
-                )
+                .glassCard(cornerRadius: 20)
             }
         }
     }
@@ -1217,11 +1203,7 @@ struct VerificationInfoSection: View {
                 VerificationRow(title: "Cryptographic Signature", subtitle: "Membership proof signed", isVerified: true)
             }
             .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.ultraThinMaterial)
-                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white.opacity(0.1), lineWidth: 1))
-            )
+            .glassCard(cornerRadius: 20)
         }
     }
 }
@@ -1264,11 +1246,7 @@ struct MembershipBenefitsSection: View {
                 BenefitRow(icon: "person.2.fill", text: "Private networking areas")
             }
             .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.ultraThinMaterial)
-                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white.opacity(0.1), lineWidth: 1))
-            )
+            .glassCard(cornerRadius: 20)
         }
     }
 }

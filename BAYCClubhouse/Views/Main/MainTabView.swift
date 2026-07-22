@@ -53,49 +53,26 @@ struct FloatingTabBar: View {
     @Namespace private var animation
 
     var body: some View {
-        HStack(spacing: 6) {
-            ForEach(MainTabView.Tab.allCases, id: \.self) { tab in
-                TabButton(
-                    tab: tab,
-                    isSelected: selectedTab == tab,
-                    animation: animation
-                ) {
-                    withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
-                        selectedTab = tab
+        // Real iOS 26 Liquid Glass: the container lets the bar and the
+        // selected pill blend/morph as one glass surface.
+        GlassEffectContainer {
+            HStack(spacing: 6) {
+                ForEach(MainTabView.Tab.allCases, id: \.self) { tab in
+                    TabButton(
+                        tab: tab,
+                        isSelected: selectedTab == tab,
+                        animation: animation
+                    ) {
+                        withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                            selectedTab = tab
+                        }
                     }
                 }
             }
+            .padding(.horizontal, 6)
+            .padding(.vertical, 6)
+            .glassCard(cornerRadius: 28)
         }
-        .padding(.horizontal, 6)
-        .padding(.vertical, 6)
-        .background(
-            // iOS 26 Liquid Glass effect
-            ZStack {
-                // Base glass material
-                RoundedRectangle(cornerRadius: 28)
-                    .fill(.ultraThinMaterial)
-
-                // Subtle dark tint for depth
-                RoundedRectangle(cornerRadius: 28)
-                    .fill(Color.black.opacity(0.15))
-
-                // Inner glow/highlight
-                RoundedRectangle(cornerRadius: 28)
-                    .stroke(
-                        LinearGradient(
-                            colors: [
-                                .white.opacity(0.5),
-                                .white.opacity(0.1),
-                                .clear,
-                                .white.opacity(0.05)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        lineWidth: 0.5
-                    )
-            }
-        )
         .shadow(color: .black.opacity(0.2), radius: 24, y: 8)
         .padding(.horizontal, 24)
         .padding(.bottom, 20)
@@ -129,42 +106,15 @@ struct TabButton: View {
             .padding(.vertical, 10)
             .background {
                 if isSelected {
-                    // iOS 26 Glass pill for selected state
-                    ZStack {
-                        // Glass fill
-                        Capsule()
-                            .fill(.ultraThinMaterial)
-
-                        // Gradient overlay
-                        Capsule()
-                            .fill(
-                                LinearGradient(
-                                    colors: [
-                                        Color(hex: "f39c12").opacity(0.7),
-                                        Color(hex: "e67e22").opacity(0.5)
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
-
-                        // Glass highlight border
-                        Capsule()
-                            .stroke(
-                                LinearGradient(
-                                    colors: [
-                                        .white.opacity(0.6),
-                                        .white.opacity(0.2),
-                                        .clear
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ),
-                                lineWidth: 0.5
-                            )
-                    }
-                    .matchedGeometryEffect(id: "TAB_BACKGROUND", in: animation)
-                    .shadow(color: Color(hex: "f39c12").opacity(0.3), radius: 8, y: 2)
+                    // Selected state: tinted interactive Liquid Glass pill
+                    Capsule()
+                        .fill(.clear)
+                        .glassPill(
+                            tint: Color(hex: "f39c12").opacity(0.6),
+                            interactive: true
+                        )
+                        .matchedGeometryEffect(id: "TAB_BACKGROUND", in: animation)
+                        .shadow(color: Color(hex: "f39c12").opacity(0.3), radius: 8, y: 2)
                 }
             }
         }

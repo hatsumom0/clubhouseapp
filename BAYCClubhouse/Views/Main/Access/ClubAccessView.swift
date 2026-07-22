@@ -213,14 +213,7 @@ struct QuickAccessActions: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
-                .background(
-                    RoundedRectangle(cornerRadius: 18)
-                        .fill(.ultraThinMaterial)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 18)
-                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                        )
-                )
+                .glassCard(cornerRadius: 18)
             }
         }
     }
@@ -460,14 +453,7 @@ struct LockerAccessCard: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(.ultraThinMaterial)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                            )
-                    )
+                    .glassCard(cornerRadius: 16)
                 }
 
                 // Actions
@@ -539,14 +525,7 @@ struct LockerAccessCard: View {
             }
         }
         .padding(20)
-        .background(
-            RoundedRectangle(cornerRadius: 24)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 24)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 24)
     }
 }
 
@@ -702,14 +681,7 @@ struct ClubAccessInfoCard: View {
             }
         }
         .padding(20)
-        .background(
-            RoundedRectangle(cornerRadius: 24)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 24)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 24)
     }
 }
 
@@ -800,10 +772,7 @@ struct ArrivalNotificationSheet: View {
                                 .tint(Color(hex: "f39c12"))
                         }
                         .padding(16)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(.ultraThinMaterial)
-                        )
+                        .glassCard(cornerRadius: 16)
 
                         // Guest Count
                         VStack(alignment: .leading, spacing: 12) {
@@ -837,10 +806,7 @@ struct ArrivalNotificationSheet: View {
                             .frame(maxWidth: .infinity)
                         }
                         .padding(16)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(.ultraThinMaterial)
-                        )
+                        .glassCard(cornerRadius: 16)
 
                         // Special Requests
                         VStack(alignment: .leading, spacing: 8) {
@@ -851,10 +817,7 @@ struct ArrivalNotificationSheet: View {
                             TextField("e.g., Champagne ready, table by window...", text: $specialRequests, axis: .vertical)
                                 .font(.system(size: 14, design: .rounded))
                                 .padding(12)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .fill(.ultraThinMaterial)
-                                )
+                                .glassCard(cornerRadius: 12)
                                 .lineLimit(3...5)
                         }
 
@@ -990,10 +953,7 @@ struct ValetRequestSheet: View {
                                 TextField("e.g., Keep AC running, charging needed...", text: $specialRequests, axis: .vertical)
                                     .font(.system(size: 14, design: .rounded))
                                     .padding(12)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .fill(.ultraThinMaterial)
-                                    )
+                                    .glassCard(cornerRadius: 12)
                                     .lineLimit(2...4)
                             }
                         } else {
@@ -1014,10 +974,7 @@ struct ValetRequestSheet: View {
                                 }
                                 .frame(maxWidth: .infinity)
                                 .padding(24)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .fill(.ultraThinMaterial)
-                                )
+                                .glassCard(cornerRadius: 16)
                             } else {
                                 Text("No vehicle currently parked with valet")
                                     .font(.system(size: 14, design: .rounded))
@@ -1115,10 +1072,7 @@ struct ValetFormField: View {
             TextField(placeholder, text: $text)
                 .font(.system(size: 15, design: .rounded))
                 .padding(12)
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(.ultraThinMaterial)
-                )
+                .glassCard(cornerRadius: 12)
         }
     }
 }

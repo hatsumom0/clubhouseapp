@@ -239,14 +239,7 @@ struct ConnectedWalletSection: View {
                     .frame(width: 10, height: 10)
             }
             .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 18)
         }
     }
 }
@@ -357,14 +350,7 @@ struct SocialConnectionRow: View {
             }
         }
         .padding(14)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-        )
+        .glassCard(cornerRadius: 16)
     }
 }
 
@@ -407,14 +393,7 @@ struct NFTGallerySection: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 30)
-                .background(
-                    RoundedRectangle(cornerRadius: 18)
-                        .fill(.ultraThinMaterial)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 18)
-                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                        )
-                )
+                .glassCard(cornerRadius: 18)
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
@@ -757,14 +736,7 @@ struct SettingsSection: View {
                 SettingsRow(icon: "lock.fill", title: "Privacy", hasToggle: false)
                 SettingsRow(icon: "questionmark.circle.fill", title: "Help & Support", hasToggle: false)
             }
-            .background(
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 18)
         }
     }
 }
@@ -818,14 +790,7 @@ struct LogoutButton: View {
             .foregroundColor(.red)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)
-            .background(
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.red.opacity(0.3), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 18)
         }
     }
 }
@@ -1121,14 +1086,7 @@ struct BasicInfoSection: View {
                 }
             }
             .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 18)
         }
     }
 }
@@ -1190,14 +1148,7 @@ struct SocialLinksEditSection: View {
                 )
             }
             .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                    )
-            )
+            .glassCard(cornerRadius: 18)
         }
     }
 }

@@ -241,10 +241,7 @@ struct CurrentTabSheet: View {
             }
         }
         .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(.ultraThinMaterial)
-        )
+        .glassCard(cornerRadius: 16)
     }
 
     // MARK: - Bottom Actions
