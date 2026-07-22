@@ -2,9 +2,12 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "clubhouseapp",
   "compatibility_date": "2026-07-01",
-  // Assets-only Worker: serve the Vite build output, no server script.
+  // Worker script handles POST /verify (signature verification);
+  // everything else falls through to the static bridge assets.
+  "main": "worker/index.ts",
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     "not_found_handling": "single-page-application"
   }
 }

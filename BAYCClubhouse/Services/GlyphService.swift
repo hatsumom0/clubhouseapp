@@ -75,6 +75,36 @@ final class GlyphService: NSObject {
         webAuthSession = nil
     }
 
+    // MARK: - Signature verification
+
+    /// Server-side cryptographic verification of the membership proof.
+    /// The bridge Worker's /verify endpoint recovers the signer (EOA) or
+    /// checks ERC-1271/6492 (smart wallets) and must confirm it matches
+    /// the claimed address. Fails closed: any error rejects the login.
+    func verifySignature(address: String, message: String, signature: String) async throws -> Bool {
+        guard let url = URL(string: Constants.Glyph.bridgeURL + "/verify") else {
+            throw GlyphError.invalidBridgeURL
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 30
+        request.httpBody = try JSONEncoder().encode(
+            ["address": address, "message": message, "signature": signature]
+        )
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
+            throw GlyphError.verificationUnavailable
+        }
+
+        struct VerifyResponse: Decodable {
+            let valid: Bool
+            let method: String?
+        }
+        return try JSONDecoder().decode(VerifyResponse.self, from: data).valid
+    }
+
     // MARK: - Callback parsing
 
     static func parseCallback(_ url: URL, expectedNonce: String) throws -> GlyphSession {
@@ -152,6 +182,8 @@ enum GlyphError: LocalizedError {
     case invalidCallback
     case missingAddress
     case nonceMismatch
+    case signatureInvalid
+    case verificationUnavailable
 
     var errorDescription: String? {
         switch self {
@@ -167,6 +199,10 @@ enum GlyphError: LocalizedError {
             return "Glyph sign-in completed but no wallet address was returned."
         case .nonceMismatch:
             return "Glyph sign-in response failed the security check (nonce mismatch). Please try again."
+        case .signatureInvalid:
+            return "Wallet ownership proof failed verification. Please try signing in again."
+        case .verificationUnavailable:
+            return "Could not verify the wallet signature right now. Please try again."
         }
     }
 }

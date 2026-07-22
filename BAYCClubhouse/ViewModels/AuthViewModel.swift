@@ -85,6 +85,26 @@ class AuthViewModel: ObservableObject {
         do {
             // Real Glyph sign-in (web bridge running @use-glyph/sdk-react)
             let session = try await glyphService.signIn()
+
+            // Fail closed: the signed message must bind this session's nonce
+            // and the claimed wallet, and the signature must verify
+            // cryptographically (bridge Worker /verify: EOA ecrecover or
+            // ERC-1271/6492 for smart wallets).
+            guard let signature = session.signature,
+                  let message = session.message,
+                  message.contains("Nonce: \(session.nonce)"),
+                  message.lowercased().contains("wallet: \(session.address.lowercased())")
+            else {
+                throw GlyphError.signatureInvalid
+            }
+            guard try await glyphService.verifySignature(
+                address: session.address,
+                message: message,
+                signature: signature
+            ) else {
+                throw GlyphError.signatureInvalid
+            }
+
             walletAddress = session.address
             allWalletAddresses = session.allWallets
             membershipSignature = session.signature
