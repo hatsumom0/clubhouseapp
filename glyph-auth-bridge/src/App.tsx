@@ -54,7 +54,7 @@ type Phase = "idle" | "connecting" | "signing" | "done" | "error";
 function Bridge() {
   const { nonce, callback } = useMemo(bridgeParams, []);
   const { connect } = useNativeGlyphConnection();
-  const { user, authenticated } = useGlyph();
+  const { user, authenticated, ready, login, refreshUser } = useGlyph();
   const { address, status: accountStatus } = useAccount();
   const { signMessageAsync } = useSignMessage();
   const { disconnect } = useDisconnect();
@@ -63,6 +63,8 @@ function Bridge() {
   const [error, setError] = useState<string | null>(null);
   const [profileWaitExpired, setProfileWaitExpired] = useState(false);
   const startedRef = useRef(false);
+  const loginRequestedRef = useRef(false);
+  const refreshRequestedRef = useRef(false);
 
   const returnToApp = (addr: string, signature: string, message: string) => {
     // Every wallet on the Glyph account: embedded + smart wallet + wallets
@@ -105,17 +107,44 @@ function Bridge() {
   };
 
   // The Glyph profile (which carries linkedWallets — where vaulted apes
-  // live) loads asynchronously after the SDK's own login signature. Give it
-  // up to 15s before proceeding with just the signing wallet.
+  // live) requires an authenticated Glyph session. An auto-reconnected
+  // wagmi session is connected but NOT authenticated, so drive it
+  // explicitly: authenticate → load profile → sign proof → return.
+
+  // Step 1: connected but not authenticated → trigger Glyph login (once)
+  useEffect(() => {
+    if (
+      ready &&
+      address &&
+      accountStatus === "connected" &&
+      !authenticated &&
+      !loginRequestedRef.current
+    ) {
+      loginRequestedRef.current = true;
+      login();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ready, authenticated, address, accountStatus]);
+
+  // Step 2: authenticated but profile not loaded → force a refresh (once)
+  useEffect(() => {
+    if (ready && authenticated && !user && !refreshRequestedRef.current) {
+      refreshRequestedRef.current = true;
+      void refreshUser(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ready, authenticated, user]);
+
+  // Safety valve: never strand the member — after 30s proceed with
+  // whatever wallets we have.
   useEffect(() => {
     if (address && accountStatus === "connected" && !user && !profileWaitExpired) {
-      const timer = setTimeout(() => setProfileWaitExpired(true), 15_000);
+      const timer = setTimeout(() => setProfileWaitExpired(true), 30_000);
       return () => clearTimeout(timer);
     }
   }, [address, accountStatus, user, profileWaitExpired]);
 
-  // Once the wallet is connected AND the profile is loaded (or the wait
-  // expired), ask for the ownership proof and return to the app.
+  // Step 3: profile loaded (or safety valve fired) → ownership proof → app
   useEffect(() => {
     if (
       address &&
@@ -166,7 +195,11 @@ function Bridge() {
         )}
 
         {address && phase === "idle" && !user && (
-          <p style={styles.copy}>Loading your Glyph profile…</p>
+          <p style={styles.copy}>
+            {!authenticated
+              ? "Authorizing with Glyph — confirm the request if prompted…"
+              : "Loading your Glyph profile…"}
+          </p>
         )}
 
         {address && phase === "signing" && (
