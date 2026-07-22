@@ -16,6 +16,9 @@ final class GlyphService: NSObject {
 
     struct GlyphSession {
         let address: String
+        /// Every wallet on the Glyph account: embedded + smart wallet +
+        /// wallets the member linked to their Glyph profile.
+        let allWallets: [String]
         let signature: String?
         /// The exact plaintext that was signed (EIP-191 personal_sign).
         let message: String?
@@ -95,8 +98,15 @@ final class GlyphService: NSObject {
         let signature = params["signature"].flatMap { $0.isEmpty ? nil : $0 }
         let message = params["message"].flatMap(Self.decodeBase64URL)
 
+        var allWallets = (params["wallets"] ?? "")
+            .split(separator: ",")
+            .map(String.init)
+            .filter { $0.range(of: #"^0x[0-9a-fA-F]{40}$"#, options: .regularExpression) != nil }
+        if allWallets.isEmpty { allWallets = [address] }
+
         return GlyphSession(
             address: address,
+            allWallets: allWallets,
             signature: signature,
             message: message,
             nonce: expectedNonce

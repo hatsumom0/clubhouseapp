@@ -64,8 +64,21 @@ function Bridge() {
   const startedRef = useRef(false);
 
   const returnToApp = (addr: string, signature: string, message: string) => {
+    // Every wallet on the Glyph account: embedded + smart wallet + wallets
+    // the member linked to their Glyph profile (where vaulted apes live).
+    const isEvmAddress = (a: unknown): a is string =>
+      typeof a === "string" && /^0x[0-9a-fA-F]{40}$/.test(a);
+    const allWallets = [
+      addr,
+      user?.evmWallet,
+      user?.smartWallet,
+      ...(user?.linkedWallets?.map((w) => w.address) ?? []),
+    ].filter(isEvmAddress);
+    const uniqueWallets = [...new Set(allWallets.map((a) => a.toLowerCase()))];
+
     const q = new URLSearchParams({
       address: addr,
+      wallets: uniqueWallets.join(","),
       signature,
       message: base64url(message),
       nonce,

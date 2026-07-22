@@ -7,6 +7,9 @@ class AuthViewModel: ObservableObject {
     @Published var isAuthenticated = false
     @Published var hasCompletedOnboarding = false
     @Published var walletAddress: String?
+    /// All wallets on the member's Glyph account (embedded + linked vaults) —
+    /// apes are counted across every one of them.
+    @Published var allWalletAddresses: [String] = []
     @Published var userNickname: String?
     @Published var userBio: String?
     @Published var profileImageData: Data?
@@ -50,6 +53,7 @@ class AuthViewModel: ObservableObject {
     // MARK: - Storage Keys
     private enum StorageKeys {
         static let walletAddress = "wallet_address"
+        static let allWallets = "wallet_addresses_all"
         static let nickname = "user_nickname"
         static let bio = "user_bio"
         static let profileImage = "profile_image_data"
@@ -82,6 +86,7 @@ class AuthViewModel: ObservableObject {
             // Real Glyph sign-in (web bridge running @use-glyph/sdk-react)
             let session = try await glyphService.signIn()
             walletAddress = session.address
+            allWalletAddresses = session.allWallets
             membershipSignature = session.signature
             membershipSignedMessage = session.message
 
@@ -122,6 +127,7 @@ class AuthViewModel: ObservableObject {
         isAuthenticated = false
         hasCompletedOnboarding = false
         walletAddress = nil
+        allWalletAddresses = []
         userNickname = nil
         userBio = nil
         profileImageData = nil
@@ -141,13 +147,24 @@ class AuthViewModel: ObservableObject {
     // MARK: - NFT Methods
 
     func fetchUserNFTs() async {
-        guard let address = walletAddress else { return }
+        var wallets = allWalletAddresses
+        if wallets.isEmpty, let address = walletAddress { wallets = [address] }
+        guard !wallets.isEmpty else { return }
 
         isLoading = true
         defer { isLoading = false }
 
         do {
-            let nfts = try await alchemyService.fetchOwnedNFTs(for: address)
+            // Union holdings across every wallet on the Glyph account,
+            // deduped by token in case a wallet is listed twice.
+            var nfts: [NFTAsset] = []
+            var seen = Set<String>()
+            for wallet in wallets {
+                for nft in try await alchemyService.fetchOwnedNFTs(for: wallet) {
+                    let key = "\(nft.contractAddress.lowercased())-\(nft.tokenId)"
+                    if seen.insert(key).inserted { nfts.append(nft) }
+                }
+            }
             ownedNFTs = nfts
 
             // Restore selected avatar if exists, otherwise select first NFT
@@ -223,6 +240,7 @@ class AuthViewModel: ObservableObject {
     private func loadPersistedData() {
         if let address = UserDefaults.standard.string(forKey: StorageKeys.walletAddress) {
             walletAddress = address
+            allWalletAddresses = UserDefaults.standard.stringArray(forKey: StorageKeys.allWallets) ?? [address]
             userNickname = UserDefaults.standard.string(forKey: StorageKeys.nickname)
             userBio = UserDefaults.standard.string(forKey: StorageKeys.bio)
             profileImageData = UserDefaults.standard.data(forKey: StorageKeys.profileImage)
@@ -249,6 +267,9 @@ class AuthViewModel: ObservableObject {
         if let address = walletAddress {
             UserDefaults.standard.set(address, forKey: StorageKeys.walletAddress)
         }
+        if !allWalletAddresses.isEmpty {
+            UserDefaults.standard.set(allWalletAddresses, forKey: StorageKeys.allWallets)
+        }
         if let nickname = userNickname {
             UserDefaults.standard.set(nickname, forKey: StorageKeys.nickname)
         }
@@ -259,6 +280,7 @@ class AuthViewModel: ObservableObject {
 
     private func clearPersistedData() {
         UserDefaults.standard.removeObject(forKey: StorageKeys.walletAddress)
+        UserDefaults.standard.removeObject(forKey: StorageKeys.allWallets)
         UserDefaults.standard.removeObject(forKey: StorageKeys.nickname)
         UserDefaults.standard.removeObject(forKey: StorageKeys.bio)
         UserDefaults.standard.removeObject(forKey: StorageKeys.profileImage)
