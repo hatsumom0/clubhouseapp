@@ -37,15 +37,12 @@ struct MinimizedChatBubble: View {
             chatManager.expandChat()
         } label: {
             ZStack {
+                // Floating FAB: the most "floating layer" element in the app —
+                // interactive tinted glass so content refracts beneath it.
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: [Color(hex: "f39c12"), Color(hex: "e74c3c")],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(.clear)
                     .frame(width: 60, height: 60)
+                    .glassCircle(tint: Color(hex: "f39c12").opacity(0.65), interactive: true)
                     .shadow(color: Color(hex: "f39c12").opacity(0.5), radius: 10, y: 5)
 
                 Image(systemName: "message.fill")
@@ -115,12 +112,11 @@ struct FullChatView: View {
             ChatInputField(messageText: $messageText, isInputFocused: _isInputFocused)
         }
         .frame(maxWidth: .infinity, maxHeight: 500)
-        .background(
-            RoundedRectangle(cornerRadius: 24)
-                .fill(Color(hex: "1a1a2e"))
-                .shadow(color: .black.opacity(0.4), radius: 20, y: -5)
-        )
+        // Floating chat panel: glass with a strong dark tint — edges and
+        // backdrop read as glass while message text keeps full contrast.
+        .glassCard(cornerRadius: 24, tint: Color(hex: "1a1a2e").opacity(0.72))
         .clipShape(RoundedRectangle(cornerRadius: 24))
+        .shadow(color: .black.opacity(0.4), radius: 20, y: -5)
         .padding(.horizontal, 12)
         .padding(.bottom, 100) // Above the tab bar
     }
@@ -221,10 +217,7 @@ struct ChatHeader: View {
             }
         }
         .padding(16)
-        .background(
-            Rectangle()
-                .fill(Color(hex: "16213e"))
-        )
+        // Transparent: the panel's glass shows through (no glass-on-glass).
     }
 }
 
@@ -673,7 +666,8 @@ struct ChatInputField: View {
             .disabled(messageText.isEmpty)
         }
         .padding(12)
-        .background(Color(hex: "16213e"))
+        // Transparent: sits inside the glass panel; the solid input capsule
+        // above keeps typing contrast.
     }
 
     private func sendMessage() {
@@ -774,14 +768,7 @@ struct QuickActionButton: View {
             .foregroundColor(.white)
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
-            .background(
-                Capsule()
-                    .fill(color.opacity(0.3))
-                    .overlay(
-                        Capsule()
-                            .stroke(color.opacity(0.5), lineWidth: 1)
-                    )
-            )
+            .glassPill(tint: color.opacity(0.4), interactive: true)
         }
     }
 }
@@ -804,10 +791,7 @@ struct EventQuickChip: View {
             }
             .padding(.horizontal, 10)
             .padding(.vertical, 6)
-            .background(
-                Capsule()
-                    .fill(Color.white.opacity(0.1))
-            )
+            .glassPill(interactive: true)
         }
     }
 }
@@ -1070,18 +1054,12 @@ struct EventGroupChatRow: View {
                 .foregroundColor(.white.opacity(0.55))
         }
         .padding(14)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(
-                            chat.unreadCount > 0
-                                ? Color(hex: "f39c12").opacity(0.3)
-                                : Color.white.opacity(0.1),
-                            lineWidth: 1
-                        )
-                )
+        // Unread chats glow warm; read chats sit in the standard dark glass.
+        .glassCard(
+            cornerRadius: 18,
+            tint: chat.unreadCount > 0
+                ? Color(hex: "f39c12").opacity(0.18)
+                : ClubhouseGlass.cardTint
         )
     }
 }
@@ -1133,9 +1111,14 @@ struct EventGroupChatView: View {
 
                 // Input bar
                 HStack(spacing: 12) {
+                    // Solid input capsule: no glass-on-glass inside the glass
+                    // bar, and typing needs steady contrast.
                     TextField("Message the group...", text: $messageText)
                         .padding(12)
-                        .glassCard(cornerRadius: 20)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color(hex: "2d2d44"))
+                        )
                         .foregroundColor(.white)
                         .focused($isInputFocused)
 
@@ -1150,7 +1133,7 @@ struct EventGroupChatView: View {
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
-                .background(.ultraThinMaterial)
+                .glassCard(cornerRadius: 0)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -1387,18 +1370,12 @@ struct InboxMessageRow: View {
                 .foregroundColor(.white.opacity(0.55))
         }
         .padding(14)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(
-                            message.isRead
-                                ? Color.white.opacity(0.1)
-                                : Color(hex: "f39c12").opacity(0.3),
-                            lineWidth: 1
-                        )
-                )
+        // Unread messages glow warm; read ones sit in the standard dark glass.
+        .glassCard(
+            cornerRadius: 18,
+            tint: message.isRead
+                ? ClubhouseGlass.cardTint
+                : Color(hex: "f39c12").opacity(0.18)
         )
     }
 
