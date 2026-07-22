@@ -2,11 +2,21 @@ import Foundation
 
 enum Constants {
     // MARK: - API Keys
-    // TODO: Move these to secure storage / environment variables
+    // Real keys live in BAYCClubhouse/Secrets.plist (gitignored — repo is
+    // public). Copy Secrets.example.plist → Secrets.plist and fill it in.
     enum API {
-        static let privyAppId = "YOUR_PRIVY_APP_ID"
-        static let alchemyApiKey = "YOUR_ALCHEMY_API_KEY"
-        static let openWeatherApiKey = "YOUR_OPENWEATHER_API_KEY"
+        static let alchemyApiKey = secret("ALCHEMY_API_KEY", fallback: "YOUR_ALCHEMY_API_KEY")
+        static let openWeatherApiKey = secret("OPENWEATHER_API_KEY", fallback: "YOUR_OPENWEATHER_API_KEY")
+
+        private static func secret(_ key: String, fallback: String) -> String {
+            guard let url = Bundle.main.url(forResource: "Secrets", withExtension: "plist"),
+                  let data = try? Data(contentsOf: url),
+                  let dict = try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: Any],
+                  let value = dict[key] as? String,
+                  !value.isEmpty
+            else { return fallback }
+            return value
+        }
     }
 
     // MARK: - Location
@@ -25,7 +35,6 @@ enum Constants {
     // MARK: - URLs
     enum URLs {
         static let alchemyBaseURL = "https://eth-mainnet.g.alchemy.com/nft/v3"
-        static let privyAuthURL = "https://auth.privy.io"
     }
 
     // MARK: - Glyph sign-in (real @use-glyph/sdk-react via web bridge)

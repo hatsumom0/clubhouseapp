@@ -15,3 +15,7 @@ glyph-auth-bridge/dist/
 .env
 .env.*
 *.xcconfig.local
+BAYCClubhouse/Secrets.plist
+
+# Build artifacts
+glyph-auth-bridge/tsconfig.tsbuildinfo
