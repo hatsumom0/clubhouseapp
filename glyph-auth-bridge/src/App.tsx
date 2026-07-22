@@ -63,7 +63,6 @@ function Bridge() {
   const [error, setError] = useState<string | null>(null);
   const [profileWaitExpired, setProfileWaitExpired] = useState(false);
   const startedRef = useRef(false);
-  const loginRequestedRef = useRef(false);
   const refreshRequestedRef = useRef(false);
 
   const returnToApp = (addr: string, signature: string, message: string) => {
@@ -111,20 +110,9 @@ function Bridge() {
   // wagmi session is connected but NOT authenticated, so drive it
   // explicitly: authenticate → load profile → sign proof → return.
 
-  // Step 1: connected but not authenticated → trigger Glyph login (once)
-  useEffect(() => {
-    if (
-      ready &&
-      address &&
-      accountStatus === "connected" &&
-      !authenticated &&
-      !loginRequestedRef.current
-    ) {
-      loginRequestedRef.current = true;
-      login();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ready, authenticated, address, accountStatus]);
+  // Step 1: connected but not authenticated → the member taps "Authorize"
+  // (login() must run inside a user gesture or the popup blocker kills it;
+  // from a tap it opens in the same window inside the auth sheet).
 
   // Step 2: authenticated but profile not loaded → force a refresh (once)
   useEffect(() => {
@@ -194,12 +182,20 @@ function Bridge() {
           </>
         )}
 
-        {address && phase === "idle" && !user && (
-          <p style={styles.copy}>
-            {!authenticated
-              ? "Authorizing with Glyph — confirm the request if prompted…"
-              : "Loading your Glyph profile…"}
-          </p>
+        {address && phase === "idle" && !user && ready && !authenticated && (
+          <>
+            <p style={styles.copy}>
+              One more step — authorize with Glyph so we can see the wallets
+              linked to your account.
+            </p>
+            <button style={styles.button} onClick={() => login()}>
+              Authorize with Glyph
+            </button>
+          </>
+        )}
+
+        {address && phase === "idle" && !user && (!ready || authenticated) && (
+          <p style={styles.copy}>Loading your Glyph profile…</p>
         )}
 
         {address && phase === "signing" && (
