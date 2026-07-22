@@ -29,33 +29,20 @@ struct HomeView: View {
                 .ignoresSafeArea()
 
                 ScrollView {
+                    // Four blocks: greeting, briefing, next commitment, one CTA.
+                    // Events live in Schedule; news/articles/community in
+                    // ClubFeedView; perks in Membership; info + hours behind
+                    // the status chip (ClubInfoSheet).
                     VStack(spacing: 24) {
-                        // Welcome header
                         WelcomeHeader()
 
-                        // AI Summary Card
+                        ClubStatusRow()
+
                         AISummaryCard()
 
-                        // Clubhouse Info Card
-                        ClubhouseInfoCard()
+                        UpNextCard()
 
-                        // Upcoming Events Section
-                        UpcomingEventsSection()
-
-                        // Yuga News Section
-                        YugaNewsSection()
-
-                        // Featured Articles Section
-                        FeaturedArticlesSection()
-
-                        // Community Highlights
-                        CommunityHighlightsSection()
-
-                        // Member Perks Section
-                        MemberPerksSection()
-
-                        // Clubhouse Hours Section
-                        ClubhouseHoursSection()
+                        TonightCard()
 
                         // Extra padding for tab bar
                         Color.clear

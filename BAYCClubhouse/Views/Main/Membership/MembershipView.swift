@@ -68,6 +68,9 @@ struct MembershipView: View {
                         // Membership Benefits
                         MembershipBenefitsSection()
 
+                        // Member Perks (moved from Home — they're a benefit)
+                        MemberPerksSection()
+
                         Spacer()
                             .frame(height: 120)
                     }
