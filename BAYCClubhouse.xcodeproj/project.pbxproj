@@ -6,7 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C7205F162F20495000EFF164 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7205F152F20495000EFF164 /* WidgetKit.framework */; };
+		C7205F182F20495000EFF164 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7205F172F20495000EFF164 /* SwiftUI.framework */; };
+		C7205F1C2F20495000EFF164 /* BAYCClubhouseWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C7205F132F20495000EFF164 /* BAYCClubhouseWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		C7205F1A2F20495000EFF164 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7C834572F188FF600695875 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7205F122F20495000EFF164;
+			remoteInfo = BAYCClubhouseWidgetsExtension;
+		};
 		C7C834712F188FF600695875 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C7C834572F188FF600695875 /* Project object */;
@@ -23,13 +36,37 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C7205F202F20495000EFF164 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C7205F1C2F20495000EFF164 /* BAYCClubhouseWidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		C7205F132F20495000EFF164 /* BAYCClubhouseWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BAYCClubhouseWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7205F152F20495000EFF164 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		C7205F172F20495000EFF164 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		C7C8345F2F188FF600695875 /* BAYCClubhouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAYCClubhouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C834702F188FF600695875 /* BAYCClubhouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAYCClubhouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C8347A2F188FF600695875 /* BAYCClubhouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAYCClubhouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C7205F212F20495100EFF164 /* Exceptions for "BAYCClubhouseWidgets" folder in "BAYCClubhouseWidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = C7205F122F20495000EFF164 /* BAYCClubhouseWidgetsExtension */;
+		};
 		C7C834822F188FF600695875 /* Exceptions for "BAYCClubhouse" folder in "BAYCClubhouse" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -40,6 +77,14 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		C7205F192F20495000EFF164 /* BAYCClubhouseWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C7205F212F20495100EFF164 /* Exceptions for "BAYCClubhouseWidgets" folder in "BAYCClubhouseWidgetsExtension" target */,
+			);
+			path = BAYCClubhouseWidgets;
+			sourceTree = "<group>";
+		};
 		C7C834612F188FF600695875 /* BAYCClubhouse */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -61,6 +106,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C7205F102F20495000EFF164 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7205F182F20495000EFF164 /* SwiftUI.framework in Frameworks */,
+				C7205F162F20495000EFF164 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7C8345C2F188FF600695875 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,12 +139,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C7205F142F20495000EFF164 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7205F152F20495000EFF164 /* WidgetKit.framework */,
+				C7205F172F20495000EFF164 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C7C834562F188FF600695875 = {
 			isa = PBXGroup;
 			children = (
 				C7C834612F188FF600695875 /* BAYCClubhouse */,
 				C7C834732F188FF600695875 /* BAYCClubhouseTests */,
 				C7C8347D2F188FF600695875 /* BAYCClubhouseUITests */,
+				C7205F192F20495000EFF164 /* BAYCClubhouseWidgets */,
+				C7205F142F20495000EFF164 /* Frameworks */,
 				C7C834602F188FF600695875 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +166,7 @@
 				C7C8345F2F188FF600695875 /* BAYCClubhouse.app */,
 				C7C834702F188FF600695875 /* BAYCClubhouseTests.xctest */,
 				C7C8347A2F188FF600695875 /* BAYCClubhouseUITests.xctest */,
+				C7205F132F20495000EFF164 /* BAYCClubhouseWidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,6 +174,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C7205F122F20495000EFF164 /* BAYCClubhouseWidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7205F1D2F20495000EFF164 /* Build configuration list for PBXNativeTarget "BAYCClubhouseWidgetsExtension" */;
+			buildPhases = (
+				C7205F0F2F20495000EFF164 /* Sources */,
+				C7205F102F20495000EFF164 /* Frameworks */,
+				C7205F112F20495000EFF164 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				C7205F192F20495000EFF164 /* BAYCClubhouseWidgets */,
+			);
+			name = BAYCClubhouseWidgetsExtension;
+			packageProductDependencies = (
+			);
+			productName = BAYCClubhouseWidgetsExtension;
+			productReference = C7205F132F20495000EFF164 /* BAYCClubhouseWidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C7C8345E2F188FF600695875 /* BAYCClubhouse */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7C834832F188FF600695875 /* Build configuration list for PBXNativeTarget "BAYCClubhouse" */;
@@ -115,10 +203,12 @@
 				C7C8345B2F188FF600695875 /* Sources */,
 				C7C8345C2F188FF600695875 /* Frameworks */,
 				C7C8345D2F188FF600695875 /* Resources */,
+				C7205F202F20495000EFF164 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C7205F1B2F20495000EFF164 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				C7C834612F188FF600695875 /* BAYCClubhouse */,
@@ -186,6 +276,9 @@
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					C7205F122F20495000EFF164 = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					C7C8345E2F188FF600695875 = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -216,11 +309,19 @@
 				C7C8345E2F188FF600695875 /* BAYCClubhouse */,
 				C7C8346F2F188FF600695875 /* BAYCClubhouseTests */,
 				C7C834792F188FF600695875 /* BAYCClubhouseUITests */,
+				C7205F122F20495000EFF164 /* BAYCClubhouseWidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C7205F112F20495000EFF164 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7C8345D2F188FF600695875 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -245,6 +346,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C7205F0F2F20495000EFF164 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7C8345B2F188FF600695875 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +377,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C7205F1B2F20495000EFF164 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C7205F122F20495000EFF164 /* BAYCClubhouseWidgetsExtension */;
+			targetProxy = C7205F1A2F20495000EFF164 /* PBXContainerItemProxy */;
+		};
 		C7C834722F188FF600695875 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C7C8345E2F188FF600695875 /* BAYCClubhouse */;
@@ -282,6 +395,66 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		C7205F1E2F20495000EFF164 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G6PDW65VG7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BAYCClubhouseWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BAYCClubhouseWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuga.BAYCClubhouse.BAYCClubhouseWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C7205F1F2F20495000EFF164 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G6PDW65VG7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BAYCClubhouseWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BAYCClubhouseWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuga.BAYCClubhouse.BAYCClubhouseWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C7C834842F188FF600695875 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -558,6 +731,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C7205F1D2F20495000EFF164 /* Build configuration list for PBXNativeTarget "BAYCClubhouseWidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7205F1E2F20495000EFF164 /* Debug */,
+				C7205F1F2F20495000EFF164 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C7C8345A2F188FF600695875 /* Build configuration list for PBXProject "BAYCClubhouse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

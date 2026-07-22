@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Xcode
+xcuserdata/
+*.xcresult
+DerivedData/
+build/
+
+# glyph-auth-bridge (web)
+glyph-auth-bridge/node_modules/
+glyph-auth-bridge/dist/
+
+# Secrets — never commit real keys
+.env
+.env.*
+*.xcconfig.local
