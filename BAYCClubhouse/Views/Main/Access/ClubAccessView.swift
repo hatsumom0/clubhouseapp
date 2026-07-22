@@ -10,7 +10,6 @@ struct ClubAccessView: View {
     @State private var selectedTab = 0
     @State private var showingValetSheet = false
     @State private var showingArrivalSheet = false
-    @State private var qrCodeRefreshTimer: Timer?
 
     var body: some View {
         NavigationStack {
@@ -38,7 +37,26 @@ struct ClubAccessView: View {
                         )
 
                         // QR Code Entry Card
-                        QRCodeEntryCard(authViewModel: authViewModel)
+                        // Canonical member QR (same component the Show QR
+                        // sheet presents), framed as the entry card.
+                        VStack(spacing: 16) {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("Entry QR Code")
+                                        .font(.system(size: 18, weight: .bold, design: .rounded))
+                                        .foregroundColor(.white)
+
+                                    Text("Show at entrance for quick access")
+                                        .font(.system(size: 13, design: .rounded))
+                                        .foregroundColor(.white.opacity(0.78))
+                                }
+                                Spacer()
+                            }
+
+                            MemberQRView()
+                        }
+                        .padding(20)
+                        .glassCard(cornerRadius: 24, tint: Color(hex: "f39c12").opacity(0.15))
 
                         // Locker Card
                         LockerAccessCard()
@@ -216,158 +234,6 @@ struct QuickAccessActions: View {
                 .glassCard(cornerRadius: 18)
             }
         }
-    }
-}
-
-// MARK: - QR Code Entry Card
-
-struct QRCodeEntryCard: View {
-    @ObservedObject var authViewModel: AuthViewModel
-    @StateObject private var accessService = ClubAccessService.shared
-    @State private var qrCodeString: String = ""
-    @State private var lastRefresh: Date = Date()
-    @State private var timeRemaining: Int = 300
-
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
-    var body: some View {
-        VStack(spacing: 16) {
-            // Header
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Entry QR Code")
-                        .font(.system(size: 18, weight: .bold, design: .rounded))
-                        .foregroundColor(.white)
-
-                    Text("Show at entrance for quick access")
-                        .font(.system(size: 13, design: .rounded))
-                        .foregroundColor(.white.opacity(0.78))
-                }
-
-                Spacer()
-
-                // Refresh countdown
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text("Refreshes in")
-                        .font(.system(size: 10, design: .rounded))
-                        .foregroundColor(.white.opacity(0.72))
-
-                    Text(formatTime(timeRemaining))
-                        .font(.system(size: 14, weight: .bold, design: .monospaced))
-                        .foregroundColor(timeRemaining < 60 ? .orange : Color(hex: "f39c12"))
-                }
-            }
-
-            // QR Code
-            ZStack {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(.white)
-                    .frame(width: 220, height: 220)
-
-                if let qrImage = generateQRCode(from: qrCodeString) {
-                    Image(uiImage: qrImage)
-                        .interpolation(.none)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 200, height: 200)
-                }
-            }
-            .shadow(color: Color(hex: "f39c12").opacity(0.3), radius: 20, y: 10)
-
-            // Member info
-            HStack(spacing: 12) {
-                Image(systemName: "person.crop.circle.fill")
-                    .font(.system(size: 20))
-                    .foregroundColor(Color(hex: "f39c12"))
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(authViewModel.userNickname ?? "Member")
-                        .font(.system(size: 14, weight: .semibold, design: .rounded))
-                        .foregroundColor(.white)
-
-                    Text("\(authViewModel.membershipTier.displayName) Member")
-                        .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(.white.opacity(0.78))
-                }
-
-                Spacer()
-
-                // Refresh button
-                Button {
-                    refreshQRCode()
-                } label: {
-                    Image(systemName: "arrow.clockwise")
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(Color(hex: "f39c12"))
-                        .padding(10)
-                        .background(Circle().fill(Color(hex: "f39c12").opacity(0.2)))
-                }
-            }
-
-            // Security note
-            HStack(spacing: 6) {
-                Image(systemName: "lock.shield.fill")
-                    .font(.system(size: 12))
-                Text("Cryptographically signed • Single use")
-                    .font(.system(size: 11, design: .rounded))
-            }
-            .foregroundColor(.white.opacity(0.65))
-        }
-        .padding(20)
-        .background(
-            RoundedRectangle(cornerRadius: 24)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 24)
-                        .stroke(Color(hex: "f39c12").opacity(0.3), lineWidth: 1)
-                )
-        )
-        .onAppear {
-            refreshQRCode()
-        }
-        .onReceive(timer) { _ in
-            if timeRemaining > 0 {
-                timeRemaining -= 1
-            } else {
-                refreshQRCode()
-            }
-        }
-    }
-
-    private func refreshQRCode() {
-        let memberData = MemberQRData(
-            memberId: authViewModel.walletAddress ?? UUID().uuidString,
-            walletAddress: authViewModel.walletAddress ?? "",
-            tokenId: authViewModel.primaryNFTId,
-            tier: authViewModel.membershipTier,
-            nickname: authViewModel.userNickname
-        )
-        qrCodeString = accessService.refreshQRCode(for: memberData)
-        lastRefresh = Date()
-        timeRemaining = 300
-    }
-
-    private func formatTime(_ seconds: Int) -> String {
-        let mins = seconds / 60
-        let secs = seconds % 60
-        return String(format: "%d:%02d", mins, secs)
-    }
-
-    private func generateQRCode(from string: String) -> UIImage? {
-        let context = CIContext()
-        let filter = CIFilter.qrCodeGenerator()
-
-        filter.message = Data(string.utf8)
-        filter.correctionLevel = "H"
-
-        guard let outputImage = filter.outputImage else { return nil }
-
-        let scale = 200 / outputImage.extent.size.width
-        let scaledImage = outputImage.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
-
-        guard let cgImage = context.createCGImage(scaledImage, from: scaledImage.extent) else { return nil }
-
-        return UIImage(cgImage: cgImage)
     }
 }
 

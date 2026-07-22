@@ -92,7 +92,7 @@ struct MembershipView: View {
             }
             .toolbarBackground(.hidden, for: .navigationBar)
             .sheet(isPresented: $showQRCode) {
-                QRCodeView()
+                MemberQRSheet()
             }
             .sheet(isPresented: $showAppleWalletPreview) {
                 AppleWalletPreviewView()
@@ -1265,123 +1265,6 @@ struct BenefitRow: View {
                 .font(.system(size: 14, design: .rounded))
                 .foregroundColor(.white.opacity(0.8))
             Spacer()
-        }
-    }
-}
-
-// MARK: - QR Code View
-
-struct QRCodeView: View {
-    @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var authViewModel: AuthViewModel
-
-    private var tier: MembershipTier {
-        authViewModel.membershipTier
-    }
-
-    private var collectionName: String {
-        tier == .black ? "BAYC" : "MAYC"
-    }
-
-    var body: some View {
-        ZStack {
-            Color(hex: "1a1a2e").ignoresSafeArea()
-
-            VStack(spacing: 32) {
-                HStack {
-                    Spacer()
-                    Button { dismiss() } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .font(.system(size: 28))
-                            .foregroundColor(.white.opacity(0.78))
-                    }
-                }
-                .padding(.horizontal, 20)
-
-                Spacer()
-
-                VStack(spacing: 24) {
-                    // Tier badge
-                    HStack(spacing: 6) {
-                        Image(systemName: tier.badgeIcon)
-                            .font(.system(size: 12))
-                        Text("\(tier.displayName.uppercased()) MEMBER")
-                            .font(.system(size: 12, weight: .bold, design: .rounded))
-                            .tracking(2)
-                    }
-                    .foregroundColor(tier.accentColor)
-
-                    Text("SCAN TO VERIFY")
-                        .font(.system(size: 14, weight: .bold, design: .rounded))
-                        .tracking(3)
-                        .foregroundColor(.white.opacity(0.7))
-
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 24)
-                            .fill(.white)
-                            .frame(width: 260, height: 260)
-
-                        Image(systemName: "qrcode")
-                            .font(.system(size: 180))
-                            .foregroundColor(.black)
-
-                        // Small profile picture overlay
-                        VStack {
-                            Spacer()
-                            HStack {
-                                Spacer()
-                                ZStack {
-                                    Circle()
-                                        .fill(.white)
-                                        .frame(width: 50, height: 50)
-
-                                    if let imageData = authViewModel.profileImageData,
-                                       let uiImage = UIImage(data: imageData) {
-                                        Image(uiImage: uiImage)
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 44, height: 44)
-                                            .clipShape(Circle())
-                                    } else {
-                                        Image(systemName: "face.smiling")
-                                            .font(.system(size: 24))
-                                            .foregroundColor(.gray)
-                                    }
-                                }
-                                .offset(x: -15, y: -15)
-                            }
-                        }
-                        .frame(width: 260, height: 260)
-                    }
-                    .shadow(color: tier.accentColor.opacity(0.4), radius: 30, y: 15)
-
-                    VStack(spacing: 8) {
-                        Text(authViewModel.userNickname ?? "APE MEMBER")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-
-                        Text("\(collectionName) #\(authViewModel.primaryNFTId ?? "0000")")
-                            .font(.system(size: 14, weight: .semibold, design: .monospaced))
-                            .foregroundColor(tier.accentColor)
-
-                        HStack(spacing: 6) {
-                            Image(systemName: "lock.fill").font(.system(size: 10))
-                            Text("Cryptographically signed").font(.system(size: 11, design: .rounded))
-                        }
-                        .foregroundColor(.white.opacity(0.72))
-                        .padding(.top, 4)
-                    }
-                }
-
-                Spacer()
-
-                Text("Present this QR code at the clubhouse entrance.\nStaff will scan to verify your membership.")
-                    .font(.system(size: 13, design: .rounded))
-                    .foregroundColor(.white.opacity(0.72))
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 40)
-                    .padding(.bottom, 40)
-            }
         }
     }
 }
